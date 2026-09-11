@@ -1,0 +1,32 @@
+node_modules/
+dist/
+exports/
+backups/
+.sites-runtime/
+.vite-preview.log
+*.tgz
+*.tar.gz
+
+# Local high-resolution source media. The GitHub deployment uses the optimized
+# WebP and *-web.mp4 counterparts while these originals remain on this machine.
+public/assets/*-full.png
+public/assets/*-board.png
+public/assets/video-editing-??.mp4
+public/assets/cosmetics-kerastase-video.mp4
+public/assets/cosmetics-lancome-video.mp4
+public/assets/home-video-nyx2.mp4
+public/assets/home-video-composited.mp4
+public/assets/home-video.mp4
+public/assets/reference-continuous.png
+public/assets/continuous-06.png
+public/assets/about-no-copy.png
+public/assets/catalogue-bg-opaque.png
+public/assets/video-editing-bg.png
+public/assets/contact-bg.png
+public/assets/materials-page.png
+public/assets/car-pattern-page.png
+public/assets/cosmetics-page-reference.png
+public/assets/reference-portfolio-hover.png
+public/assets/trendy-toys-page.png
+portfolio-reference-crop.png
+.github-public/

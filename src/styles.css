@@ -1,0 +1,1068 @@
+@font-face{font-family:Anton;src:url('/assets/anton-regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:block}
+:root{font-family:Arial,"Microsoft YaHei",sans-serif;color:#aaa;background:#000;font-synthesis:none;--header:3.49vw;--line:rgba(170,170,170,.24)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:var(--header)}body{margin:0}html,body,body *{cursor:url('/assets/custom-site-cursor.png') 3 1,auto!important}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;color:inherit}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible{outline:2px solid #eee;outline-offset:5px}button{border:0}img{display:block;max-width:100%}p,h1,h2,figure{margin:0}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link{position:fixed;top:-100px;left:20px;z-index:150;padding:12px;background:#fff;color:#000}.skip-link:focus{top:12px}
+.site-header{height:var(--header);position:fixed;inset:0 0 auto;z-index:30;background:#000;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 2.3vw;font-size:.79vw;line-height:.95}.site-brand{display:block;letter-spacing:-.035em}.site-header nav{display:flex;margin-left:auto;margin-right:10.1vw;align-items:center;gap:0}.site-header nav a{padding:0 1.55vw;position:relative;white-space:nowrap;transition:color .2s}.site-header nav a+a:before{content:"";position:absolute;left:0;top:25%;height:65%;border-left:1px solid #444}.site-header nav a:last-child{padding-right:0}.site-header nav a span{font-size:.87em;margin-left:2px}.site-header a:hover,.site-header a[aria-current]{color:#e8e8e8}.menu-toggle{position:absolute;right:1.65vw;background:transparent;padding:0;line-height:.5;font-size:1.5vw;letter-spacing:.15em}.site-menu{position:absolute;right:1.8vw;top:calc(100% + 12px);width:240px;background:#0c0c0c;border:1px solid #454545;padding:18px;box-shadow:0 16px 50px #0009}.site-menu a,.site-menu button{display:block;width:100%;padding:13px 7px;text-align:left;font-size:15px;line-height:1.3;background:none}.site-menu span{float:right;font-size:12px}.site-menu button{border-top:1px solid #333;margin-top:8px}.site-menu a:hover,.site-menu button:hover{background:#202020}main{padding-top:var(--header)}
+.screen{position:relative;height:calc(100svh - var(--header));min-height:52.76vw;isolation:isolate;overflow:hidden;scroll-margin-top:0}.full-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3}.hero-video{z-index:-2}.hero-video.failed{display:none}.background-shade{position:absolute;inset:0;background:#000b;z-index:-2}.grid-lines{position:absolute;inset:0;pointer-events:none;z-index:-1}.grid-lines i{position:absolute;height:100%;border-left:1px solid var(--line);top:0}
+.home{color:#f4f4f4;background:#8e1000}.welcome{position:absolute;top:8.65%;left:12.5%;font-size:1.82vw;font-weight:500;letter-spacing:-.045em}.horse-logo{position:absolute;width:5.45%;left:82.1%;top:7.7%}.hero-heading img{position:absolute}.deran-wordmark{left:12.5%;top:45.3%;width:28.25%}.portfolio-wordmark{left:41.4%;top:67.1%;width:46.1%}.monogram{position:absolute;left:41.2%;top:44.8%;width:6.51%}.hero-intro,.hero-note{position:absolute;font-size:.735vw;line-height:1.14;font-weight:400}.hero-intro{top:46.9%;left:67.4%;width:20.1%;text-align:justify;text-align-last:right}.hero-note{top:82.2%;left:12.5%;width:16.6%}
+.services{position:absolute;top:0;width:100%;height:11.85%;border-bottom:1px solid var(--line);display:grid;grid-template-columns:27.15% 22.85% 22.85% 27.15%;align-items:center;font-size:.94vw;line-height:1;letter-spacing:-.045em}.services>div{padding-left:2.35vw}.services>div:first-child{padding-left:12.6vw}.services>div:nth-child(3){padding-left:2.75vw}.cross{position:absolute;width:.79vw;min-width:8px;height:auto}.cross-left{left:6.1%;bottom:0;transform:translate(-50%,50%)}.cross-right{right:6.1%;bottom:0;transform:translate(50%,50%)}
+.section-label{position:absolute;top:19.1%;left:12.5%;font-size:1.82vw;font-weight:600;letter-spacing:-.055em}.about-copy{position:absolute;top:29.7%;left:12.5%;width:47%;font-size:2.37vw}.about-zh{font-weight:600;line-height:1.19;text-align:justify;text-indent:2em;letter-spacing:-.018em}.about-en{margin-top:3.16vw;font-size:2.39vw;line-height:1.024;font-weight:500;text-align:justify;text-indent:1.8em;letter-spacing:-.021em}.avatar{position:absolute;top:26.95%;left:72.45%;width:21.85%}.avatar>img{width:100%}.avatar figcaption{margin:1vw 1.3vw 0 .6vw;text-align:right;font-size:.76vw;line-height:.98;letter-spacing:-.02em;color:#8f8f8f}
+.catalogue-background{object-position:center}.portfolio .background-shade{background:#000a}.catalogue-heading{position:absolute;left:22.2%;top:2.8%;height:24%;display:flex;align-items:center;gap:.65vw;width:56.2%;justify-content:center}.catalogue-heading>img{height:100%;width:auto}.catalogue-heading .catalogue-wordmark{height:auto;width:88%}.project-cards{position:absolute;top:31.1%;left:12.5%;width:75%;height:47.7%;display:flex;align-items:stretch}.project-card{position:relative;flex:1;min-width:0;height:100%;background:#333;border-radius:1.45vw;overflow:hidden;text-align:left;padding:0;transition:transform .35s,filter .35s;box-shadow:-10px 0 22px #0002}.project-card:not(:first-child){margin-left:-1.8vw}.project-card:first-child{z-index:5}.project-card:nth-child(2){z-index:4}.project-card:nth-child(3){z-index:3}.project-card:nth-child(4){z-index:2}.project-card:nth-child(5){z-index:1}.project-card>img{height:100%;width:100%;object-fit:cover;filter:grayscale(1) brightness(.66);transition:filter .35s}.project-card:hover,.project-card:focus-visible{z-index:6;transform:translateY(-.75vw)}.project-card:hover>img,.project-card:focus-visible>img{filter:grayscale(0) brightness(1)}.project-number{position:absolute;top:1.2vw;left:1.1vw;border:2px solid #eee;border-radius:50%;width:2.15vw;height:2.15vw;display:grid;place-items:center;font-size:1.6vw;font-weight:500;line-height:1;letter-spacing:-.1em;padding-right:.12em;color:#f5f5f5}.project-title{position:absolute;right:1vw;bottom:1.6vw;color:#f4f4f4;display:flex;flex-direction:row-reverse;align-items:flex-end;gap:.1vw}.project-en{writing-mode:vertical-rl;font-size:1.36vw;line-height:1;font-weight:600}.project-zh{writing-mode:vertical-rl;font-size:1.32vw;font-weight:600;line-height:1;letter-spacing:.03em}.catalogue-note{position:absolute;top:87.45%;left:20.4%;width:60.2%;text-align:center;font-size:.77vw;line-height:1;letter-spacing:-.01em;color:#999}
+.contact .background-shade{background:rgba(0,0,0,.72)}.contact-horizontal{position:absolute;top:43.1%;width:100%;border-top:1px solid var(--line);z-index:-1}.contact-thanks,.contact-invite,.contact-forward{position:absolute;font-size:1.5vw;line-height:1.02;font-weight:600;letter-spacing:-.025em}.contact p[lang]{font-size:1.43vw;line-height:1.23;margin-bottom:.65vw}.contact-thanks{left:12.6%;top:24.7%}.contact-invite{left:29.5%;top:67.4%}.contact-forward{left:74.8%;top:47.9%;width:17.8%}.qr-arrow{position:absolute;right:0;bottom:0;width:2.1vw;background:none;padding:0;transition:transform .2s}.qr-arrow:hover{transform:translateY(4px)}.qr-arrow img{width:100%}.contact-card-frame{position:absolute;left:72.85%;top:65.8%;width:21.05%;height:22.55%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.2vw}.corner-tl{top:0;left:0;transform:translate(-50%,-50%)}.corner-tr{top:0;right:0;transform:translate(50%,-50%)}.corner-bl{bottom:0;left:0;transform:translate(-50%,50%)}.corner-br{bottom:0;right:0;transform:translate(50%,50%)}.contact-card{background:#d50000;height:100%;display:grid;grid-template-columns:1fr 1fr;padding:.31vw;gap:.31vw}.contact-details{position:relative;overflow:hidden}.contact-details>img{width:100%;height:100%;object-fit:cover}.contact-links{position:absolute;bottom:.2vw;left:.3vw;right:0;display:flex;flex-direction:column;color:white;font-size:.65vw;font-weight:600;line-height:1.2;white-space:nowrap}.contact-links a:hover{text-decoration:underline}.qr-button{background:#fff;padding:0;width:100%;height:100%;display:grid;place-items:center}.qr-button img{width:100%;image-rendering:auto}
+.loader{position:fixed;inset:0;z-index:100;background:#000;color:white;transition:opacity .65s,visibility .65s}.loader.leaving{opacity:0;visibility:hidden}.loader-title{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:2.23vw;letter-spacing:-.04em;white-space:nowrap}.loader-bottom{position:absolute;bottom:8.65%;left:50%;transform:translateX(-50%);text-align:center}.load-circle{width:3vw;height:3vw;min-width:42px;min-height:42px;border:1px solid #999;border-radius:50%;display:grid;place-items:center;margin:auto;font-family:"Arial Narrow",Arial,sans-serif;font-size:1.1vw;letter-spacing:-.05em}.loader-bottom p{font-size:.54vw;letter-spacing:-.04em;color:#999;margin-top:1.2vw;white-space:nowrap}
+.preview-dialog{padding:25px;width:min(650px,90vw);max-height:92svh;color:#eee;background:#101010;border:1px solid #555;overflow:auto}.preview-dialog::backdrop{background:#000d;backdrop-filter:blur(10px)}.dialog-top{display:flex;justify-content:space-between;align-items:start;gap:25px;margin-bottom:20px}.dialog-top span{font-size:11px;letter-spacing:.12em;color:#999}.dialog-top h2{font-size:25px;margin-top:8px;font-weight:500}.close-dialog{font-size:13px;white-space:nowrap;padding:10px 13px;background:#222;border:1px solid #444}.close-dialog:hover{background:#383838}.preview-image{height:min(65svh,610px);width:auto;margin:0 auto;object-fit:contain}.dialog-caption{font-size:13px;color:#aaa;text-align:center;margin-top:18px;line-height:1.5}.qr-dialog{width:min(430px,90vw)}.qr-dialog .preview-image{width:min(290px,100%);height:auto;image-rendering:pixelated}
+@media(min-aspect-ratio:2/1) and (min-width:761px){.screen{height:52.76vw}}
+@media(max-width:760px){
+ :root{--header:68px}.site-header{padding:0 20px;font-size:11px;line-height:1}.site-header nav{display:none}.menu-toggle{right:19px;font-size:25px;padding:15px 0}.site-menu{right:16px;top:calc(100% + 8px);width:calc(100vw - 32px)}.screen{min-height:0;height:auto;scroll-margin-top:0}.grid-lines i{opacity:.7}.full-grid i:nth-child(2),.full-grid i:nth-child(4){display:none}.grid-lines i:first-child{left:5%!important}.grid-lines i:last-child{left:95%!important}.home{height:calc(100svh - var(--header));min-height:640px}.home .full-background{object-position:51% center}.home:after{content:"";position:absolute;inset:0;z-index:-1;background:#0002}.welcome{top:6%;left:8%;font-size:23px}.horse-logo{top:6%;left:auto;right:8%;width:64px}.deran-wordmark{left:8%;top:37%;width:56%}.monogram{left:66%;top:37%;width:13%}.portfolio-wordmark{left:8%;top:57%;width:84%}.hero-intro{top:auto;bottom:19%;left:42%;width:50%;font-size:10px;line-height:1.17}.hero-note{top:auto;bottom:5%;left:8%;width:56%;font-size:10px;line-height:1.25}.services{position:relative;height:116px;grid-template-columns:1fr 1fr 1fr 1fr;font-size:10px;line-height:1.08;letter-spacing:-.045em;padding:0 5%}.services>div,.services>div:first-child,.services>div:nth-child(3){padding:0 9px}.cross{width:10px}.cross-left{left:5%}.cross-right{right:5%}.about{padding-bottom:52px}.section-label{position:relative;left:auto;top:auto;margin:34px 8% 35px;font-size:25px}.about-copy{position:relative;top:auto;left:auto;width:auto;margin:0 8%;font-size:22px}.about-zh{line-height:1.48;letter-spacing:-.04em;text-indent:2em}.about-en{font-size:22px;line-height:1.16;letter-spacing:-.025em;text-indent:1.5em;margin-top:35px;text-align:left}.avatar{position:relative;top:auto;left:auto;width:70%;margin:38px auto 0}.avatar figcaption{margin:15px 14px 0;font-size:10px;line-height:1.2}.portfolio{padding:35px 0 40px;min-height:720px}.catalogue-heading{position:relative;left:auto;top:auto;width:86%;height:70px;margin:0 auto 34px;gap:5px}.catalogue-heading>img{height:100%;max-width:7%}.catalogue-heading .catalogue-wordmark{width:84%;max-width:84%;height:auto}.project-cards{position:relative;left:auto;top:auto;width:100%;height:420px;overflow-x:auto;padding:12px 8% 20px;scroll-snap-type:x mandatory;scrollbar-color:#999 #292929;scrollbar-width:thin}.project-card{flex:0 0 72%;border-radius:19px;scroll-snap-align:center;box-shadow:none}.project-card:not(:first-child){margin-left:14px}.project-card:hover,.project-card:focus-visible{transform:translateY(-5px)}.project-number{top:17px;left:17px;width:34px;height:34px;font-size:24px}.project-title{right:18px;bottom:25px;gap:3px}.project-en{font-size:22px}.project-zh{font-size:21px}.catalogue-note{position:relative;left:auto;top:auto;width:84%;margin:32px auto 0;font-size:11px;line-height:1.35}.contact{min-height:940px;padding-bottom:50px}.contact .full-background{object-position:60% center}.contact .background-shade{background:#000b}.contact-thanks,.contact-invite,.contact-forward{position:relative;left:auto;top:auto;font-size:21px;line-height:1.06;letter-spacing:-.025em}.contact p[lang]{font-size:20px;margin-bottom:12px}.contact-thanks{margin:49px 8% 0}.contact-invite{margin:74px 8% 0 26%}.contact-forward{width:66%;margin:55px 8% 0 26%}.contact-horizontal{top:34%}.qr-arrow{width:34px}.contact-card-frame{position:relative;left:auto;top:auto;width:84%;height:205px;margin:28px auto 0;padding:16px}.contact-card{gap:5px;padding:5px;max-width:330px;margin:auto}.contact-links{font-size:10px;bottom:5px;left:5px}.loader-title{font-size:28px}.load-circle{font-size:15px;width:47px;height:47px}.loader-bottom p{font-size:9px;margin-top:20px}.loader-bottom{bottom:9%}.preview-dialog{padding:20px}.preview-image{max-height:60svh;height:auto;max-width:100%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}.continuous-main .home .hero-copy{opacity:1!important;transform:none!important}}
+/* Reference calibration: exported backgrounds already carry 25% alpha. */
+html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
+.portfolio .background-shade,.contact .background-shade{background:transparent}
+.welcome{width:10.42%}.section-label{width:7.45%}.welcome img,.section-label img{width:100%}
+.project-card{background:#000}
+.project-card>img{position:absolute;max-width:none;width:115.24%;height:109.9%;left:-2.86%;top:-2.47%;object-fit:fill;filter:grayscale(1)}
+.project-card:hover>img,.project-card:focus-visible>img{filter:grayscale(0) brightness(1.08)}
+.about-copy{font-size:2.32vw}.about-zh{line-height:1.23;letter-spacing:-.042em;text-indent:0}
+.about-zh>span,.about-en>span{display:block;white-space:nowrap;text-align:justify;text-align-last:justify}
+.about-zh>span:first-child{margin-left:2em}.about-zh>span:last-child,.about-en>span:last-child{text-align-last:left}
+.about-en{margin-top:3.2vw;text-indent:0;line-height:1.024;font-size:2.39vw}.about-en>span:first-child{margin-left:1.8em}
+.about-en .desktop-hyphen{display:inline}
+.contact-thanks,.contact-invite,.contact-forward{font-weight:500}
+.contact p[lang]{font-weight:600}
+.contact-links a{display:flex;align-items:center;gap:.1vw}.contact-links a>img{width:.57vw;height:auto}
+@media(max-width:760px){.welcome{width:132px}.section-label{width:110px}.about-copy{font-size:22px}.about-zh{line-height:1.48;text-indent:2em;letter-spacing:-.04em}.about-zh>span,.about-en>span{display:inline;white-space:normal;text-align:inherit;text-align-last:inherit}.about-zh>span:first-child,.about-en>span:first-child{margin-left:0}.about-en{font-size:22px;text-indent:1.5em;line-height:1.16;margin-top:35px}.about-en .desktop-hyphen{display:none}.contact-links a>img{width:10px}.contact-links a{gap:2px}}
+@media(min-width:761px){.screen>.full-background{top:calc(-1 * var(--header));height:calc(100% + var(--header))}}
+@media(min-width:761px) and (max-width:1100px){:root{--header:64px}.site-header{font-size:12px;padding:0 20px}.site-brand{font-size:11px}.site-header nav{margin-right:48px}.site-header nav a{padding:12px}.menu-toggle{font-size:25px;right:20px}.site-menu{right:20px}.screen{height:calc(100svh - var(--header))}}
+@media(max-width:760px){.home{min-height:740px}.hero-intro{bottom:15%;font-size:11px;width:55%;left:37%}.hero-note{font-size:11px;bottom:4%}}
+@media(max-width:760px){.about-zh{text-align:left}}
+/* Updated reference calibration: portfolio hover and contact interaction. */
+.project-card .project-title,.project-card .project-number{transition:opacity .25s ease}
+.project-card:hover .project-title,.project-card:focus-visible .project-title,
+.project-card:hover .project-number,.project-card:focus-visible .project-number{opacity:0}
+.contact{background:#000}
+.contact .contact-card{overflow:visible}
+.contact .qr-button{position:relative;z-index:2;overflow:visible}
+.contact .qr-button img{transform-origin:center;transition:transform .28s ease,filter .28s ease}
+.contact .qr-button:hover img,.contact .qr-button:focus-visible img{transform:scale(1.14);filter:drop-shadow(0 10px 14px #000b)}
+@media(max-width:760px){.contact .qr-button:hover img,.contact .qr-button:focus-visible img{transform:scale(1.08)}}
+
+/* The revised supplied page exports are the primary desktop artwork. */
+.reference-mode{background:#000}
+.reference-shot{position:absolute;left:0;top:calc(-1 * var(--header));width:100%;height:calc(100% + var(--header));object-fit:cover;z-index:1;pointer-events:none;transition:opacity .22s ease}
+.reference-shot.is-hidden{opacity:0}
+.reference-mode>:not(.reference-shot):not(.reference-hotspots):not(.reference-qr-button){visibility:hidden}
+.reference-mode .reference-hotspots{visibility:visible;z-index:3}
+.portfolio.reference-mode .project-card{visibility:visible;opacity:0;background:transparent;box-shadow:none;transform:none!important}
+.portfolio.reference-mode .project-card>*{visibility:hidden}
+.portfolio.reference-mode .project-card:focus-visible{opacity:.05;outline-color:#fff}
+.reference-qr-button{position:absolute;z-index:3;left:83.45%;top:68.8%;width:9.05%;padding:0;background:#fff;line-height:0;overflow:visible}
+.reference-qr-button img{display:block;width:100%;transform-origin:center;transition:transform .28s ease,filter .28s ease}
+.reference-qr-button:hover img,.reference-qr-button:focus-visible img{transform:scale(1.28);filter:drop-shadow(0 10px 14px #000b)}
+@media(min-width:761px) and (max-aspect-ratio:8/5){
+  /* Tall desktop windows crop the 16:9 source at the sides; keep the live QR aligned with that crop. */
+  .reference-qr-button{left:91.4%;width:10.25%}
+}
+@media(max-width:760px){
+  .reference-mode{height:calc(100svh - var(--header));min-height:640px;padding:0}
+  .reference-shot{top:calc(-1 * var(--header));height:calc(100% + var(--header));object-position:center}
+  .portfolio.reference-mode{min-height:680px}
+  .portfolio.reference-mode .reference-hotspots{position:absolute;top:31%;left:0;height:50%;padding:0 8%;overflow-x:auto}
+  .portfolio.reference-mode .project-card{flex:0 0 72%}
+  .contact.reference-mode{min-height:720px}
+  .reference-qr-button{top:68.8%;width:11.5%}
+  .reference-qr-button:hover img,.reference-qr-button:focus-visible img{transform:scale(1.12)}
+}
+
+/* One continuous source board keeps desktop section boundaries visually seamless. */
+.continuous-main{position:relative;isolation:isolate;background:#000}
+.continuous-shot{position:absolute;inset:0 auto auto 0;z-index:0;width:100%;height:auto;max-width:none;pointer-events:none}
+.continuous-main .continuous-section{z-index:1;height:56.25vw;min-height:0;background:transparent;overflow:hidden}
+.continuous-main .continuous-section:first-of-type{height:calc(56.25vw - var(--header))}
+.continuous-main .continuous-section>.reference-shot:not(.reference-portfolio-hover){display:none}
+.continuous-main .reference-portfolio-hover{display:block;top:0;height:100%;z-index:2}
+/* The continuous board has no side crop, so use the source QR's native coordinates. */
+.continuous-main .reference-qr-button{left:83.45%;width:9.05%}
+@media(max-width:760px){
+  .continuous-main .continuous-shot{display:none}
+  .continuous-main .continuous-section{height:calc(100svh - var(--header));min-height:640px;background:#000}
+  .continuous-main .continuous-section:first-of-type{height:calc(100svh - var(--header))}
+  .continuous-main .continuous-section>.reference-shot:not(.reference-portfolio-hover){display:block}
+  .continuous-main .reference-portfolio-hover{top:calc(-1 * var(--header));height:calc(100% + var(--header))}
+  .continuous-main .portfolio.continuous-section{min-height:680px}
+  .continuous-main .contact.continuous-section{min-height:720px}
+}
+
+/* Home uses the supplied moving background while retaining the existing live navigation and composition layer. */
+.continuous-main .home .reference-shot,.continuous-main .home>.full-background:not(.hero-video){display:none}
+.continuous-main .home>:not(.reference-shot):not(.reference-hotspots):not(.reference-qr-button){visibility:visible}
+.continuous-main .home .hero-video{z-index:0}
+.continuous-main .home .grid-lines{z-index:1}
+.continuous-main .home .welcome,.continuous-main .home .horse-logo,.continuous-main .home .hero-heading,.continuous-main .home .monogram,.continuous-main .home .hero-intro,.continuous-main .home .hero-note{z-index:2}
+
+/* The source board's about copy is replaced by live Text Type layers. */
+.continuous-main .about .about-clean-art{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;max-width:none;object-fit:cover;visibility:visible!important;pointer-events:none}
+.continuous-main .about .about-copy-mask{position:absolute;z-index:2;top:27.5%;left:11%;width:52%;height:65%;background:#000;visibility:visible}
+.continuous-main .about .about-copy{z-index:3;visibility:visible;color:#b9b9b9}
+.continuous-main .about .about-copy .text-type__content{display:inline;white-space:pre-wrap;text-align:left}
+.continuous-main .about .about-zh,.continuous-main .about .about-en{white-space:pre-wrap;text-align:left}
+
+/* The artwork contains static copy. Keep it covered so only the live typewriter
+   layers can be seen when the About section is in view. */
+.continuous-main .about .about-copy-mask{z-index:4!important;visibility:visible!important}
+.continuous-main .about .about-copy{z-index:5!important;visibility:visible!important}
+@media(min-width:761px){
+  /* The new supplied artwork has no copy. The text layer follows the measured
+     bounds and four-line rhythm from its matching labelled reference. */
+  .continuous-main .about .about-copy-mask{display:none}
+  .continuous-main .about .about-copy{top:36.45%;width:52%;font-size:2.32vw}
+  .continuous-main .about .about-zh{letter-spacing:-.042em}
+}
+@media(max-width:760px){.continuous-main .about .about-clean-art{display:none!important}}
+
+/* About service labels are animated HTML text while their baked counterparts
+   are covered within the otherwise unchanged supplied artwork. */
+.continuous-main .about .services{top:calc(var(--header) + .25vw);z-index:3;visibility:visible!important;border-bottom:0}
+.continuous-main .about .services .cross{display:none}
+.continuous-main .about .services>div{position:relative;color:transparent}
+.continuous-main .about .services>div::before{content:"";position:absolute;z-index:0;top:50%;left:1.85vw;width:15vw;height:3.5vw;transform:translateY(-50%);background:#000}
+.continuous-main .about .services>div:first-child::before{left:12.1vw}
+.continuous-main .about .services>div:nth-child(3)::before{left:2.25vw}
+.continuous-main .about .services>div>span{position:relative;z-index:1;display:block;color:#aaa;opacity:0;transform:translateY(-.9vw);animation:about-service-reveal .42s cubic-bezier(.22,.8,.32,1) forwards}
+.continuous-main .about .services-reveal>div:nth-child(1)>span{animation-delay:.04s}
+.continuous-main .about .services-reveal>div:nth-child(2)>span{animation-delay:.13s}
+.continuous-main .about .services-reveal>div:nth-child(3)>span{animation-delay:.22s}
+.continuous-main .about .services-reveal>div:nth-child(4)>span{animation-delay:.31s}
+@keyframes about-service-reveal{from{opacity:0;transform:translateY(-.9vw)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.continuous-main .about .services>div>span{opacity:1;transform:none}}
+
+/* A selected project only changes colour and stacking order; its size and position stay fixed. */
+
+/* Cursor-following sound cue for the supplied home interaction. */
+.rock-prompt{position:fixed;z-index:200;left:0;top:0;display:flex;align-items:center;gap:.45rem;min-height:2.4rem;padding:.48rem .92rem;opacity:0;visibility:hidden;transform:translate(-50%,calc(-100% - 1rem));border:1px solid rgba(255,255,255,.66);border-radius:999px;background:rgba(255,255,255,.62);box-shadow:0 .45rem 1.6rem rgba(0,0,0,.16);backdrop-filter:blur(10px);color:#101010;font-size:.77rem;font-weight:600;line-height:1;letter-spacing:.01em;pointer-events:none;white-space:nowrap;transition:opacity .16s ease,visibility .16s ease}.rock-prompt.is-visible{opacity:1;visibility:visible}.rock-prompt svg{width:1rem;height:1rem;flex:0 0 auto}
+
+/* On the continuous board, grayscale cards and their labels are baked into the source. A live mask removes the selected source card before its matching colour card takes the top stacking layer. */
+.continuous-main .portfolio.reference-mode .project-card{opacity:1;background:transparent;overflow:visible;isolation:isolate;border-radius:1.45vw;transition:z-index 0s,filter .34s ease}
+.continuous-main .portfolio.reference-mode .project-card::before{content:"";position:absolute;inset:-1px;z-index:0;border-radius:inherit;background:#100302;opacity:0;transition:opacity .18s ease}
+.continuous-main .portfolio.reference-mode .project-card.is-active,.continuous-main .portfolio.reference-mode .project-card:focus-visible{z-index:20!important;transform:none!important;box-shadow:none}
+.continuous-main .portfolio.reference-mode .project-card.is-active::before,.continuous-main .portfolio.reference-mode .project-card:focus-visible::before{opacity:1}
+
+/* Replace the baked Catalogue wordmark with the supplied WebGL Warp Text layer. */
+.continuous-main .portfolio .catalogue-warp-layer{position:absolute;z-index:4;left:22.2%;top:2.8%;width:56.2%;height:24%;overflow:hidden;visibility:visible}
+.catalogue-warp-backdrop{position:absolute;z-index:0;left:-39.5%;top:-11.7%;width:177.94%;max-width:none;height:auto;pointer-events:none}
+.catalogue-warp-layer .warp-text{position:relative;z-index:1;height:100%;min-height:0}
+
+/* The visible QR remains part of the supplied source board; this is only its click target. */
+.reference-qr-button,.continuous-main .reference-qr-button{background:transparent;border:0;overflow:visible}
+.reference-qr-button:hover,.reference-qr-button:focus-visible{background:transparent}
+
+/* QR is shown once, in a deliberate half-screen modal after click. */
+.qr-dialog{width:min(50vw,900px);padding:clamp(1.25rem,2vw,2rem)}
+.qr-dialog .preview-image{width:min(42vw,720px);height:auto;max-height:70svh;image-rendering:auto}
+
+@media(max-width:760px){
+  .rock-prompt{display:none}
+  .continuous-main .portfolio.reference-mode .project-card{border-radius:19px}
+  .continuous-main .portfolio .catalogue-warp-layer{display:none}
+  .continuous-main .about .about-copy-mask{top:25%;left:5%;width:64%;height:68%}
+  .qr-dialog{width:min(92vw,620px)}
+  .qr-dialog .preview-image{width:min(78vw,500px)}
+}
+
+/* Live text layers for About, Portfolio, and Contact. The supplied clean artwork stays underneath. */
+.continuous-main .about .about-reference-art{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;max-width:none;object-fit:cover;visibility:visible!important;pointer-events:none}
+.continuous-main .about .grid-lines,.continuous-main .about .services,.continuous-main .about .about-title-motion,.continuous-main .about .about-copy-motion,.continuous-main .about .avatar-motion{visibility:visible!important;z-index:3}
+.continuous-main .about .about-title-motion{position:absolute}
+.continuous-main .about .about-copy-motion{position:absolute;color:#b9b9b9}
+.continuous-main .about .avatar-motion{position:absolute}
+.continuous-main .about .avatar-motion figure>img{width:100%}
+.continuous-main .about .about-title-mask{position:absolute;z-index:2;left:11.5%;top:23%;width:11%;height:7%;background:#000;visibility:visible!important}
+.continuous-main .about .about-title-motion{inset:0;overflow:hidden;clip-path:inset(22% 76% 68% 11%);pointer-events:none}
+.continuous-main .about .about-title-motion>img,.continuous-main .about .about-caption-motion>img{width:100%;height:100%;max-width:none;object-fit:fill}
+.continuous-main .about .about-caption-mask{position:absolute;z-index:2;left:76%;top:89%;width:18%;height:7%;background:#000;visibility:visible!important}
+.continuous-main .about .about-caption-motion{position:absolute;inset:0;z-index:3;overflow:hidden;clip-path:inset(88% 5% 2% 74%);pointer-events:none;visibility:visible!important}
+
+.continuous-main .portfolio{background:#140000}
+.continuous-main .portfolio .catalogue-background{visibility:visible!important;z-index:0;object-position:center}
+.continuous-main .portfolio .background-shade{visibility:visible!important;z-index:1;background:#0008}
+.continuous-main .portfolio .grid-lines{visibility:visible!important;z-index:2}
+.continuous-main .portfolio .catalogue-warp-layer,.continuous-main .portfolio .portfolio-cards-motion,.continuous-main .portfolio .catalogue-note{visibility:visible!important;z-index:4}
+.continuous-main .portfolio .portfolio-cards-motion{position:absolute;top:31.1%;left:12.5%;width:75%;height:47.7%;display:flex;align-items:stretch}
+.continuous-main .portfolio .project-card{visibility:visible!important;opacity:1!important;background:#080808;overflow:hidden;isolation:isolate;border-radius:1.45vw;box-shadow:none;transition:z-index 0s}
+.continuous-main .portfolio .project-card>*{visibility:visible!important}
+.continuous-main .portfolio .project-card::before{display:none}
+.continuous-main .portfolio .project-surface{position:relative;z-index:1;display:block;width:100%;height:100%}
+.continuous-main .portfolio .project-surface>img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.68);transition:filter .24s ease}
+.continuous-main .portfolio .project-card.is-active .project-surface>img,.continuous-main .portfolio .project-card:focus-visible .project-surface>img{filter:grayscale(0) brightness(1)}
+.continuous-main .portfolio .catalogue-note{position:absolute;color:#999}
+
+.continuous-main .contact{background:#000}
+.continuous-main .contact .contact-background{visibility:visible!important;z-index:0;object-position:center}
+.continuous-main .contact .background-shade{visibility:visible!important;z-index:1;background:rgba(0,0,0,.72)}
+.continuous-main .contact .grid-lines,.continuous-main .contact .services,.continuous-main .contact .contact-horizontal,.continuous-main .contact .contact-thanks,.continuous-main .contact .contact-invite,.continuous-main .contact .contact-forward,.continuous-main .contact .contact-card-frame{visibility:visible!important;z-index:3}
+.continuous-main .contact .contact-horizontal{z-index:2}
+
+@media(max-width:760px){
+  .continuous-main .portfolio .portfolio-cards-motion{left:0;width:100%;padding:12px 8% 20px;overflow-x:auto}
+  .continuous-main .portfolio .project-card{border-radius:19px}
+}
+
+/* Portfolio interaction: the fixed grayscale stack carries a shadow; only the
+   selected colour card moves above the stack without one. */
+.continuous-main .portfolio.reference-mode .project-cards{
+  top:35.4%;
+  left:10.35%;
+  width:79.35%;
+  height:47.4%;
+}
+@media(min-width:761px){
+  .continuous-main .portfolio.reference-mode .project-cards{display:block}
+  .continuous-main .portfolio.reference-mode .project-card{
+    position:absolute;
+    top:0;
+    height:100%;
+    width:auto;
+    aspect-ratio:356 / 544;
+    flex:none;
+    margin:0!important;
+  }
+  .continuous-main .portfolio.reference-mode .project-card:nth-child(1){left:0}
+  .continuous-main .portfolio.reference-mode .project-card:nth-child(2){left:19.26%}
+  .continuous-main .portfolio.reference-mode .project-card:nth-child(3){left:38.52%}
+  .continuous-main .portfolio.reference-mode .project-card:nth-child(4){left:57.78%}
+  .continuous-main .portfolio.reference-mode .project-card:nth-child(5){left:77.04%}
+}
+.continuous-main .portfolio.reference-mode .project-card{
+  visibility:visible!important;
+  opacity:1!important;
+  isolation:isolate;
+  overflow:visible;
+  background:transparent;
+  border-radius:1.45vw;
+  transform:none!important;
+  box-shadow:none!important;
+  transition:z-index 0s;
+}
+.continuous-main .portfolio.reference-mode .project-card::before{display:none}
+.continuous-main .portfolio.reference-mode .project-card .project-surface{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  display:block;
+  visibility:visible;
+  overflow:hidden;
+  border-radius:inherit;
+  background:transparent;
+  opacity:1;
+  box-shadow:none!important;
+}
+.continuous-main .portfolio.reference-mode .project-card .project-surface > img{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  display:block;
+  visibility:visible;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+  filter:grayscale(1) brightness(.66);
+  transition:filter .24s ease;
+}
+.continuous-main .portfolio.reference-mode .project-card .project-default-image{
+  object-fit:fill;
+  filter:none!important;
+  opacity:1;
+  transition:opacity .2s ease;
+}
+.continuous-main .portfolio.reference-mode .project-card .project-color-image{
+  object-fit:cover;
+  filter:none!important;
+  opacity:0;
+  transition:opacity .2s ease;
+}
+.continuous-main .portfolio.reference-mode .project-card .project-number,
+.continuous-main .portfolio.reference-mode .project-card .project-title{z-index:2;visibility:visible;opacity:1;transition:opacity .2s ease}
+.continuous-main .portfolio.reference-mode .project-card.is-active,
+.continuous-main .portfolio.reference-mode .project-card:focus-visible{z-index:20!important;box-shadow:none!important}
+.continuous-main .portfolio.reference-mode .project-card.is-active .project-surface > img,
+.continuous-main .portfolio.reference-mode .project-card:focus-visible .project-surface > img{filter:grayscale(0) brightness(1)}
+.continuous-main .portfolio.reference-mode .project-card.is-active .project-default-image,
+.continuous-main .portfolio.reference-mode .project-card:focus-visible .project-default-image{opacity:0}
+.continuous-main .portfolio.reference-mode .project-card.is-active .project-color-image,
+.continuous-main .portfolio.reference-mode .project-card:focus-visible .project-color-image{opacity:1}
+.continuous-main .portfolio.reference-mode .project-card.is-active .project-number,
+.continuous-main .portfolio.reference-mode .project-card.is-active .project-title,
+.continuous-main .portfolio.reference-mode .project-card:focus-visible .project-number,
+.continuous-main .portfolio.reference-mode .project-card:focus-visible .project-title{opacity:0}
+
+/* The new portfolio board already includes its complete grayscale card stack.
+   These buttons are therefore transparent hit areas until their colour artwork
+   is required over the matching printed card. */
+.continuous-main .portfolio.composited-card-base .background-shade,
+.continuous-main .portfolio.composited-card-base .grid-lines,
+.continuous-main .portfolio.composited-card-base .catalogue-note{display:none!important}
+.continuous-main .portfolio.composited-card-base .project-cards{z-index:5}
+.continuous-main .portfolio.composited-card-base .project-card .project-surface{
+  background:transparent;
+  opacity:0;
+}
+.continuous-main .portfolio.composited-card-base .project-card .project-color-image{opacity:1}
+.continuous-main .portfolio.composited-card-base .project-card.is-active .project-surface,
+.continuous-main .portfolio.composited-card-base .project-card:focus-visible .project-surface,
+.continuous-main .portfolio.composited-card-base .project-card:focus .project-surface{opacity:1}
+@media(min-width:761px){
+  .continuous-main .portfolio.composited-card-base{
+    height:56.25vw;
+    min-height:0;
+  }
+
+  /* The board image is displayed with the fixed header included in its cover
+     area. These are the resulting, rendered card coordinates—not the source
+     image percentages—so the colour layer sits precisely over the baked card. */
+  .continuous-main .portfolio.composited-card-base .project-cards{
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+  }
+  .continuous-main .portfolio.composited-card-base .project-card{
+    top:31.48%;
+    width:18.49%;
+    height:50.32%;
+    aspect-ratio:auto;
+    outline:none;
+  }
+  .continuous-main .portfolio.composited-card-base .project-card:nth-child(1){left:7.91%}
+  .continuous-main .portfolio.composited-card-base .project-card:nth-child(2){left:26.03%}
+  .continuous-main .portfolio.composited-card-base .project-card:nth-child(3){left:42.51%}
+  .continuous-main .portfolio.composited-card-base .project-card:nth-child(4){left:58.80%}
+  .continuous-main .portfolio.composited-card-base .project-card:nth-child(5){left:75.29%}
+}
+@media(max-width:760px){
+  .continuous-main .portfolio.reference-mode .project-cards{
+    top:31%;
+    left:0;
+    width:100%;
+    height:50%;
+  }
+  .continuous-main .portfolio.reference-mode .project-card .project-surface{
+    border-radius:19px;
+  }
+  .continuous-main .portfolio.reference-mode .project-card.is-active .project-surface,
+  .continuous-main .portfolio.reference-mode .project-card:focus-visible .project-surface{
+    transform:none;
+  }
+}
+
+/* Static continuous-board edition: keep the live home cover, then reveal the
+   remaining three 16:9 panels from the supplied 8000 × 18000 source as one
+   uninterrupted image. */
+.static-board-site .static-pages-board{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:168.75vw;
+  min-height:0;
+  overflow:hidden;
+  background:#000;
+}
+.static-board-site .static-pages-image{
+  position:absolute;
+  top:-56.25vw;
+  left:0;
+  width:100%;
+  height:auto;
+  max-width:none;
+  pointer-events:none;
+  user-select:none;
+}
+.static-board-site .static-section-anchor{
+  position:absolute;
+  left:0;
+  width:100%;
+  height:33.333333%;
+  pointer-events:none;
+}
+.static-board-site .static-about-anchor{top:0;z-index:2;overflow:hidden}
+.static-board-site .static-portfolio-anchor{top:33.333333%;z-index:1;overflow:hidden}
+.static-board-site .static-contact-anchor{top:66.666667%;z-index:2;overflow:hidden}
+.static-board-site .about-panel-clean,
+.static-board-site .portfolio-panel-clean{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:fill;
+  pointer-events:none;
+  user-select:none;
+}
+.static-board-site .about-panel-clean,
+.static-board-site .portfolio-panel-clean{z-index:0}
+.static-board-site .text-static-mask{
+  position:absolute;
+  z-index:1;
+  display:block;
+  background:#000;
+  pointer-events:none;
+}
+
+.static-board-site .text-image-reveal{
+  position:absolute;
+  z-index:2;
+  display:block;
+  margin:0;
+  pointer-events:none;
+  user-select:none;
+  transform-origin:center;
+}
+.static-board-site .text-image-whole{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:fill;
+  will-change:transform,opacity,filter;
+}
+.static-board-site .text-slice-window{
+  position:absolute;
+  display:block;
+  overflow:hidden;
+  pointer-events:none;
+}
+.static-board-site .text-slice-motion{
+  position:absolute;
+  inset:0;
+  display:block;
+  will-change:transform,opacity,filter;
+}
+.static-board-site .text-slice-motion img{
+  position:absolute;
+  display:block;
+  max-width:none;
+  object-fit:fill;
+}
+
+/* About: the body-copy-free board is the base. Tight black masks remove the
+   remaining baked labels before their transparent PNG equivalents animate. */
+.static-board-site .about-mask-services-1{left:12.4479%;top:10.2778%;width:5.8333%;height:3.7963%}
+.static-board-site .about-mask-services-2{left:29.3229%;top:10.2778%;width:7.3438%;height:3.7963%}
+.static-board-site .about-mask-services-3{left:52.5521%;top:10.2778%;width:5.4167%;height:3.7963%}
+.static-board-site .about-mask-services-4{left:75.1042%;top:10.2778%;width:4.3229%;height:3.7963%}
+.static-board-site .about-mask-label{left:12.2396%;top:23.9815%;width:7.8646%;height:3.2407%}
+.static-board-site .about-mask-caption{left:73.8542%;top:86.2963%;width:18.9583%;height:4.6296%}
+.static-board-site .about-motion-services{left:12.6563%;top:10.6481%;width:66.5625%;height:3.0556%}
+.static-board-site .about-motion-label{left:12.4479%;top:24.3519%;width:7.4479%;height:2.5%}
+.static-board-site .about-motion-copy-zh{left:13.0729%;top:36.0185%;width:46.9271%;height:21.2963%}
+.static-board-site .about-motion-copy-en{left:12.7083%;top:61.4815%;width:47.7083%;height:33.1481%}
+.static-board-site .about-motion-caption{left:74.0625%;top:86.6667%;width:18.5417%;height:3.8889%}
+
+/* Catalogue: one deliberate focal moment. A clean background lets the five
+   independent work cards fan out, reveal colour, and move without ghosting. */
+.static-board-site .portfolio-panel-shade,
+.static-board-site .portfolio-panel-grid{
+  position:absolute;
+  inset:0;
+  display:block;
+  pointer-events:none;
+}
+.static-board-site .portfolio-panel-shade{z-index:1;background:rgba(0,0,0,.58)}
+.static-board-site .portfolio-panel-grid{
+  z-index:2;
+  background:
+    linear-gradient(to right,
+      transparent 5.72%,rgba(170,170,170,.24) 5.72%,rgba(170,170,170,.24) calc(5.72% + 1px),transparent calc(5.72% + 1px),
+      transparent 94.08%,rgba(170,170,170,.24) 94.08%,rgba(170,170,170,.24) calc(94.08% + 1px),transparent calc(94.08% + 1px)),
+    linear-gradient(to bottom,
+      transparent 9.25%,rgba(170,170,170,.24) 9.25%,rgba(170,170,170,.24) calc(9.25% + 1px),transparent calc(9.25% + 1px),
+      transparent 85%,rgba(170,170,170,.24) 85%,rgba(170,170,170,.24) calc(85% + 1px),transparent calc(85% + 1px));
+}
+.static-board-site .catalogue-motion-title{
+  position:absolute;
+  z-index:3;
+  left:22.2%;
+  top:2.8%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.65vw;
+  width:56.2%;
+  height:24%;
+  pointer-events:none;
+}
+.static-board-site .catalogue-motion-title .text-image-reveal{position:relative;inset:auto;flex:none}
+.static-board-site .catalogue-motion-paren{width:4.55%;height:92.9%}
+.static-board-site .catalogue-motion-word{width:88%;height:82.9%}
+.static-board-site .portfolio-static-note{
+  position:absolute;
+  z-index:3;
+  left:20.4%;
+  top:87.45%;
+  width:60.2%;
+  color:#999;
+  font-size:.77vw;
+  font-weight:400;
+  line-height:1;
+  letter-spacing:-.01em;
+  text-align:center;
+}
+/* Contact: cover only the baked glyph bounds so the surrounding grid and QR
+   card remain untouched. */
+.static-board-site .contact-mask-services-1{left:12.4479%;top:10.2778%;width:5.8333%;height:3.7963%}
+.static-board-site .contact-mask-services-2{left:29.3229%;top:10.2778%;width:7.3438%;height:3.7963%}
+.static-board-site .contact-mask-services-3{left:52.5521%;top:10.2778%;width:5.4167%;height:3.7963%}
+.static-board-site .contact-mask-services-4{left:75.1042%;top:10.2778%;width:4.3229%;height:3.7963%}
+.static-board-site .contact-mask-thanks{left:12.3958%;top:28.7963%;width:19.0104%;height:9.7222%}
+.static-board-site .contact-mask-invite{left:29.2708%;top:69.1667%;width:17.9167%;height:18.3333%}
+.static-board-site .contact-mask-forward{left:74.6354%;top:51.0185%;width:15.1042%;height:12.5%}
+.static-board-site .contact-mask-arrow{left:89.8958%;top:58.9815%;width:2.5521%;height:4.537%}
+.static-board-site .contact-motion-services{left:12.6563%;top:10.6481%;width:66.5625%;height:3.0556%}
+.static-board-site .contact-motion-thanks-zh{left:12.6042%;top:29.1667%;width:10.4688%;height:2.5926%}
+.static-board-site .contact-motion-thanks-en{left:12.6563%;top:33.3333%;width:18.4375%;height:4.6296%}
+.static-board-site .contact-motion-invite-zh{left:29.5313%;top:69.537%;width:16.0417%;height:5.6481%}
+.static-board-site .contact-motion-invite-en{left:29.4792%;top:77.1296%;width:17.2917%;height:9.9074%}
+.static-board-site .contact-motion-forward-zh{left:74.8958%;top:51.3889%;width:9.0104%;height:2.5%}
+.static-board-site .contact-motion-forward-en{left:74.8438%;top:55.6481%;width:14.5833%;height:7.2222%}
+.static-board-site .contact-motion-arrow{left:90.1042%;top:59.3519%;width:2.1354%;height:3.7963%}
+.static-board-site .contact-card-zoom-trigger{
+  position:absolute;
+  z-index:4;
+  left:74.1%;
+  top:70.15%;
+  width:18.6%;
+  height:16.65%;
+  padding:0;
+  border:0;
+  border-radius:.2vw;
+  background:transparent;
+  cursor:pointer;
+  pointer-events:auto;
+  transition:box-shadow 160ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1);
+}
+.static-board-site .contact-card-zoom-trigger:active{transform:scale(.98)}
+.static-board-site .contact-card-zoom-trigger:focus-visible{
+  outline:2px solid #fff;
+  outline-offset:4px;
+  box-shadow:0 0 0 6px rgba(213,0,0,.75);
+}
+@media(hover:hover) and (pointer:fine){
+  .static-board-site .contact-card-zoom-trigger:hover{box-shadow:0 0 0 3px rgba(255,255,255,.78),0 0 28px rgba(213,0,0,.68)}
+}
+
+.contact-preview-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:300;
+  display:grid;
+  place-items:center;
+  padding:clamp(18px,4vw,56px);
+  background:rgba(0,0,0,.88);
+  backdrop-filter:blur(8px);
+}
+.contact-preview-dialog{
+  position:relative;
+  width:min(900px,92vw);
+  transform-origin:center;
+}
+.contact-preview-card{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(5px,1vw,10px);
+  width:100%;
+  aspect-ratio:2/1;
+  padding:clamp(5px,1vw,10px);
+  background:#d50000;
+  box-shadow:0 28px 80px rgba(0,0,0,.6);
+}
+.contact-preview-person{
+  position:relative;
+  min-width:0;
+  overflow:hidden;
+  background:#160000;
+}
+.contact-preview-person>img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:70% center;
+}
+.contact-preview-links{
+  position:absolute;
+  left:clamp(9px,1.7vw,18px);
+  right:8px;
+  bottom:clamp(9px,1.7vw,18px);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  color:#fff;
+  font-size:clamp(12px,1.55vw,21px);
+  font-weight:600;
+  line-height:1.25;
+  text-shadow:0 2px 8px #000,0 1px 2px #000;
+}
+.contact-preview-links a{color:inherit;text-decoration:none}
+.contact-preview-links a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(hover:hover) and (pointer:fine){
+  .contact-preview-links a:hover{text-decoration:underline}
+}
+.contact-preview-qr{
+  display:grid;
+  place-items:center;
+  min-width:0;
+  overflow:hidden;
+  background:#fff;
+}
+.contact-preview-qr img{
+  display:block;
+  width:94%;
+  height:94%;
+  object-fit:contain;
+  image-rendering:auto;
+}
+.contact-preview-close{
+  position:absolute;
+  right:0;
+  bottom:calc(100% + 14px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:50%;
+  background:rgba(0,0,0,.72);
+  color:#fff;
+  font-size:30px;
+  line-height:1;
+  cursor:pointer;
+  transition:background-color 160ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1);
+}
+.contact-preview-close:active{transform:scale(.95)}
+.contact-preview-close:focus-visible{outline:2px solid #fff;outline-offset:4px}
+@media(hover:hover) and (pointer:fine){
+  .contact-preview-close:hover{background:#d50000}
+}
+.contact-preview-hint{
+  margin:14px 0 0;
+  color:#aaa;
+  font-size:clamp(11px,1vw,14px);
+  line-height:1.4;
+  letter-spacing:.02em;
+  text-align:center;
+}
+@media(max-width:520px){
+  .contact-preview-backdrop{padding:54px 16px 20px}
+  .contact-preview-dialog{width:100%}
+  .contact-preview-card{gap:5px;padding:5px}
+  .contact-preview-links{font-size:10px;left:8px;bottom:8px}
+  .contact-preview-close{bottom:calc(100% + 10px);width:40px;height:40px;font-size:27px}
+}
+
+/* Film-contact-sheet interaction: the cards unfold from a compact centre deck.
+   Hover/focus develops one work into colour while its neighbours make room. */
+.static-board-site .portfolio-motion-stage{
+  position:absolute;
+  z-index:4;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+.static-board-site .portfolio-motion-card-shell{
+  position:absolute;
+  display:block;
+  z-index:1;
+  pointer-events:none;
+  will-change:transform,opacity;
+}
+.static-board-site .portfolio-motion-card-shell:nth-child(1){z-index:5}
+.static-board-site .portfolio-motion-card-shell:nth-child(2){z-index:4}
+.static-board-site .portfolio-motion-card-shell:nth-child(3){z-index:3}
+.static-board-site .portfolio-motion-card-shell:nth-child(4){z-index:2}
+.static-board-site .portfolio-motion-card-shell:nth-child(5){z-index:1}
+.static-board-site .portfolio-motion-card-shell.is-active{z-index:10}
+.static-board-site .portfolio-motion-card-08{left:9.85%;top:33.9778%;width:18.375%;height:50.3556%}
+.static-board-site .portfolio-motion-card-09{left:25.325%;top:33.9111%;width:18.425%;height:50.4889%}
+.static-board-site .portfolio-motion-card-10{left:40.7875%;top:33.9111%;width:18.45%;height:50.5333%}
+.static-board-site .portfolio-motion-card-11{left:56.3%;top:33.9556%;width:18.4125%;height:50.4444%}
+.static-board-site .portfolio-motion-card-12{left:71.8%;top:33.9778%;width:18.3875%;height:50.3778%}
+.static-board-site .portfolio-motion-card{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+  pointer-events:auto;
+  transform-origin:center;
+  border-radius:1.45vw;
+  box-shadow:-10px 0 22px rgba(0,0,0,.42);
+  transition:transform 180ms cubic-bezier(.23,1,.32,1);
+  will-change:transform;
+  -webkit-tap-highlight-color:transparent;
+}
+.static-board-site .portfolio-motion-card:focus-visible{outline:2px solid #fff;outline-offset:5px}
+.static-board-site .portfolio-motion-card:active{transform:translate3d(0,-6px,0) scale(.985)!important}
+.static-board-site .portfolio-motion-visual{
+  position:absolute;
+  inset:0;
+  display:block;
+  overflow:hidden;
+  border-radius:1.45vw;
+  background:#777;
+  pointer-events:none;
+}
+.static-board-site .portfolio-motion-gray,
+.static-board-site .portfolio-motion-color-reveal,
+.static-board-site .portfolio-motion-dim{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+}
+.static-board-site .portfolio-motion-gray{
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  filter:grayscale(1) brightness(.72) contrast(.96);
+  user-select:none;
+}
+.static-board-site .portfolio-motion-color-reveal{
+  overflow:hidden;
+  opacity:0;
+  clip-path:inset(100% 0 0 0 round 1.45vw);
+  transition:clip-path 280ms cubic-bezier(.23,1,.32,1),opacity 180ms cubic-bezier(.23,1,.32,1);
+  will-change:clip-path,opacity;
+}
+.static-board-site .portfolio-motion-color-reveal img{
+  position:absolute;
+  left:0;
+  top:0;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:fill;
+  user-select:none;
+}
+.static-board-site .portfolio-motion-card.is-active .portfolio-motion-color-reveal{opacity:1;clip-path:inset(0 0 0 0 round 1.45vw)}
+.static-board-site .portfolio-motion-dim{
+  border-radius:1.45vw;
+  background:rgba(0,0,0,.25);
+  opacity:0;
+  transition:opacity 180ms cubic-bezier(.23,1,.32,1);
+}
+.static-board-site .portfolio-motion-card.is-dimmed .portfolio-motion-dim{opacity:1}
+.static-board-site .portfolio-motion-number{
+  position:absolute;
+  top:3.5%;
+  left:5.8%;
+  display:grid;
+  place-items:center;
+  width:12.25%;
+  aspect-ratio:1;
+  border:2px solid currentColor;
+  border-radius:50%;
+  font-size:1.55vw;
+  font-weight:500;
+  line-height:1;
+  letter-spacing:-.08em;
+}
+.static-board-site .portfolio-motion-title{
+  position:absolute;
+  right:4.6%;
+  bottom:5.5%;
+  display:flex;
+  flex-direction:row-reverse;
+  align-items:flex-end;
+  gap:.2vw;
+  font-weight:600;
+  line-height:1;
+}
+.static-board-site .portfolio-motion-title span{
+  writing-mode:vertical-rl;
+  font-size:1.38vw;
+}
+.static-board-site .portfolio-motion-title span[lang]{font-size:1.32vw;letter-spacing:.02em}
+@media(prefers-reduced-motion:reduce){
+  .static-board-site .text-image-whole,
+  .static-board-site .text-slice-motion{filter:none!important;transform:none!important;opacity:1!important}
+  .static-board-site .portfolio-motion-card,
+  .static-board-site .portfolio-motion-color-reveal,
+  .static-board-site .portfolio-motion-dim{transition:none}
+  .static-board-site .contact-card-zoom-trigger,
+  .contact-preview-close{transition:none}
+}
+
+/* Cosmetics detail page: the supplied 8000px-wide background and transparent
+   work board share one coordinate system, so every card keeps its exact crop,
+   size, spacing, and rounded corners while the document scrolls normally. */
+html.cosmetics-document{
+  scroll-padding-top:0;
+}
+body.cosmetics-body{overflow:hidden;background:#0a0a0a}
+.cosmetics-detail-page{
+  position:relative;
+  width:100%;
+  height:100svh;
+  min-height:0;
+  padding:0;
+  overflow-x:hidden;
+  overflow-y:auto;
+  background:#0a0a0a;
+  scrollbar-width:thin;
+  scrollbar-color:#aaa #252525;
+}
+.cosmetics-detail-page::-webkit-scrollbar{display:block;width:16px}
+.cosmetics-detail-page::-webkit-scrollbar-track{background:#252525}
+.cosmetics-detail-page::-webkit-scrollbar-thumb{background:#aaa;border-radius:999px;border:3px solid #252525}
+.cosmetics-detail-canvas{
+  position:relative;
+  width:100%;
+  min-height:max(100svh,96.675vw);
+  overflow:hidden;
+  isolation:isolate;
+}
+.cosmetics-detail-background,
+.cosmetics-detail-works{
+  position:absolute;
+  inset:0 auto auto 0;
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:none;
+  user-select:none;
+}
+.cosmetics-detail-background{z-index:0}
+.cosmetics-detail-works{z-index:1;pointer-events:none}
+.cosmetics-detail-index{position:absolute;inset:0;z-index:2;pointer-events:none}
+.cosmetics-index-link{
+  position:absolute;
+  top:6.25vw;
+  width:3.3vw;
+  height:2.5vw;
+  min-width:28px;
+  min-height:22px;
+  border-radius:999px;
+  pointer-events:auto;
+}
+.cosmetics-index-link-1{left:66.2%}
+.cosmetics-index-link-2{left:71.2%}
+.cosmetics-index-link-3{left:76.2%}
+.cosmetics-index-link-4{left:81.2%}
+.cosmetics-index-link-5{left:86.2%}
+.cosmetics-index-link-6{left:91.2%}
+.cosmetics-work-target{
+  position:absolute;
+  z-index:2;
+  width:1px;
+  height:1px;
+  opacity:0;
+  pointer-events:none;
+  scroll-margin-top:3vw;
+}
+.cosmetics-work-target-1,.cosmetics-work-target-2,.cosmetics-work-target-3{top:10.7vw}
+.cosmetics-work-target-4,.cosmetics-work-target-5,.cosmetics-work-target-6{top:90vw}
+.cosmetics-work-target-1,.cosmetics-work-target-4{left:4.275%}
+.cosmetics-work-target-2,.cosmetics-work-target-5{left:34.875%}
+.cosmetics-work-target-3,.cosmetics-work-target-6{left:65.625%}
+.cosmetics-work-open{
+  position:absolute;
+  z-index:3;
+  display:block;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:transparent;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.cosmetics-work-open-1{
+  left:4.275%;
+  top:12.325vw;
+  width:28.85%;
+  height:36.0875vw;
+}
+.cosmetics-work-open-2{left:34.9875%;top:12.325vw;width:28.8375%;height:36.0875vw}
+.cosmetics-work-open-3{left:65.6875%;top:12.325vw;width:28.85%;height:36.0875vw}
+.cosmetics-work-open-4{left:4.275%;top:49.9vw;width:28.85%;height:36.0875vw}
+.cosmetics-work-open-5{left:34.9875%;top:49.9vw;width:28.8375%;height:36.0875vw}
+.cosmetics-work-open-6{left:65.6875%;top:49.9vw;width:28.85%;height:36.0875vw}
+.cosmetics-work-open-1,.cosmetics-work-open-2,.cosmetics-work-open-3,.cosmetics-work-open-4,.cosmetics-work-open-5,.cosmetics-work-open-6{border-radius:1.5vw}
+.cosmetics-work-open:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+.cosmetics-detail-page.is-artwork-open{overflow:hidden}
+
+/* Full-work viewer for all six cosmetics cards. Long images retain their source
+   aspect ratio; videos use the same 4009/8000-wide center column and controls. */
+.cosmetics-artwork-dialog{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:block;
+  overflow-x:hidden;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:#aaa #252525;
+}
+.cosmetics-artwork-dialog::-webkit-scrollbar{display:block;width:16px}
+.cosmetics-artwork-dialog::-webkit-scrollbar-track{background:#252525}
+.cosmetics-artwork-dialog::-webkit-scrollbar-thumb{background:#aaa;border-radius:999px;border:3px solid #252525}
+.cosmetics-artwork-dim{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:fill;
+  pointer-events:none;
+  user-select:none;
+}
+.cosmetics-artwork-sheet{
+  position:relative;
+  z-index:1;
+  width:50.1125vw;
+  margin:6.5vw auto;
+}
+.cosmetics-artwork-image{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:none;
+  user-select:none;
+}
+.cosmetics-artwork-sheet.is-video{background:#000}
+.cosmetics-artwork-video{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:calc(100svh - 13vw);
+  background:#000;
+  object-fit:contain;
+}
+.cosmetics-artwork-close{
+  position:fixed;
+  z-index:2;
+  left:26.125vw;
+  top:7.625vw;
+  display:block;
+  width:4.7vw;
+  min-width:48px;
+  padding:0;
+  border:0;
+  border-radius:1.1vw;
+  background:transparent;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.cosmetics-artwork-close img{display:block;width:100%;height:auto;max-width:none}
+.cosmetics-artwork-close:focus-visible{outline:2px solid #fff;outline-offset:4px}
+@media(max-width:760px){
+  .cosmetics-detail-page::-webkit-scrollbar{width:10px}
+  .cosmetics-index-link{min-width:20px;min-height:18px}
+  .cosmetics-work-open-1,.cosmetics-work-open-2,.cosmetics-work-open-3,.cosmetics-work-open-4,.cosmetics-work-open-5,.cosmetics-work-open-6{border-radius:12px}
+  .cosmetics-artwork-dialog::-webkit-scrollbar{width:10px}
+  .cosmetics-artwork-sheet{width:92vw;margin:15vw auto 8vw}
+  .cosmetics-artwork-close{left:6vw;top:4vw;width:15vw;min-width:48px}
+}
+
+/* IP, car, materials, and video-editing detail pages use the supplied full-canvas artwork.
+   The black grid/title layer and transparent work layer retain the original
+   8000 × 4500 coordinate system, so their composition stays pixel-aligned. */
+html.series-detail-document{scroll-padding-top:0;background:#080808}
+body.series-detail-body{overflow-x:hidden;background:#080808}
+.series-detail-page{
+  width:100%;
+  min-height:100svh;
+  padding:0;
+  overflow:hidden;
+  background:#080808;
+}
+.series-detail-canvas{
+  position:relative;
+  width:100%;
+  height:56.25vw;
+  min-height:0;
+  overflow:hidden;
+  isolation:isolate;
+}
+.series-detail-background,
+.series-detail-board{
+  position:absolute;
+  inset:0 auto auto 0;
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:none;
+  user-select:none;
+}
+.series-detail-background{z-index:0}
+.series-detail-board{z-index:1;pointer-events:none}
+.series-work-open{
+  position:absolute;
+  z-index:2;
+  display:block;
+  padding:0;
+  border:0;
+  border-radius:1.45vw;
+  background:transparent;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.series-work-open:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+.series-trendy-toys .series-work-open-1{left:4.275%;top:21.733%;width:43.5125%;height:72.225%}
+.series-trendy-toys .series-work-open-2{left:51.3125%;top:21.733%;width:43.5125%;height:72.225%}
+.series-car-pattern .series-work-open-1{left:4.55%;top:21.733%;width:90.575%;height:72.225%}
+.series-materials .series-work-open-1{left:4.275%;top:21.875%;width:28.85%;height:64.3%}
+.series-materials .series-work-open-2{left:34.9875%;top:21.875%;width:28.8375%;height:64.3%}
+.series-materials .series-work-open-3{left:65.6875%;top:21.875%;width:28.85%;height:64.3%}
+.series-video-editing .series-work-open-1{left:4.275%;top:9.125%;width:28.85%;height:26.63%}
+.series-video-editing .series-work-open-2{left:34.9875%;top:9.125%;width:28.8375%;height:26.63%}
+.series-video-editing .series-work-open-3{left:65.6875%;top:9.125%;width:28.85%;height:26.63%}
+.series-video-editing .series-work-open-4{left:4.275%;top:37.14%;width:28.85%;height:26.55%}
+.series-video-editing .series-work-open-5{left:34.9875%;top:37.14%;width:28.8375%;height:26.55%}
+.series-video-editing .series-work-open-6{left:65.6875%;top:37.14%;width:28.85%;height:26.55%}
+.series-video-editing .series-work-open-7{left:4.275%;top:65.07%;width:28.85%;height:26.63%}
+.series-video-editing .series-work-open-8{left:34.9875%;top:65.07%;width:28.8375%;height:26.63%}
+.series-video-editing .series-detail-canvas{
+  height:135.625vw;
+  background:#080808 url('/assets/video-editing-grid.png') repeat;
+  background-size:1vw 1vw;
+}
+.series-detail-index{
+  position:absolute;
+  z-index:3;
+  left:71.15%;
+  top:5.14%;
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  gap:.42vw;
+  width:23.55%;
+  height:2.55%;
+}
+.series-index-link{
+  display:block;
+  min-width:0;
+  border-radius:999px;
+  background:transparent;
+  -webkit-tap-highlight-color:transparent;
+}
+.series-index-link:focus-visible{outline:2px solid #fff;outline-offset:-3px}
+@media(max-width:760px){
+  .series-work-open{border-radius:12px}
+  .series-detail-index{gap:3px}
+}
+

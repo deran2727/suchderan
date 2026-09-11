@@ -1,0 +1,24 @@
+{
+  "name": "deran-portfolio",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/prepare-sites-build.mjs",
+    "build:github": "vite build --mode github",
+    "export:html": "vite build && node scripts/prepare-sites-build.mjs && node scripts/export-portfolio-html.mjs",
+    "preview": "vite preview",
+    "test:sites": "node --test tests/sites-worker.test.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "5.0.4",
+    "gsap": "^3.15.0",
+    "motion": "^13.2.0",
+    "ogl": "^1.0.11",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-icons": "^5.7.0",
+    "vite": "6.4.2"
+  }
+}
