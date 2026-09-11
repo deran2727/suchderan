@@ -23,6 +23,12 @@ const portfolioCards = [
 ];
 
 const textMotionAssets = [
+  'home-welcome.png',
+  'home-horse-logo.png',
+  'home-deran-wordmark.png',
+  'home-intro-copy.png',
+  'home-portfolio-wordmark.png',
+  'home-note-copy.png',
   'continuous-06.webp',
   'about-no-copy.webp',
   'catalogue-bg-opaque.webp',
@@ -205,6 +211,122 @@ function SectionTextSequence({ children, className = '', ...props }) {
     >
       {children}
     </m.div>
+  );
+}
+
+const homeTextLayers = [
+  {
+    id: 'welcome',
+    file: 'home-welcome.png',
+    className: 'home-text-welcome',
+    label: 'WELCOME',
+    from: 'translate3d(0, 0, 0) scale(0.96)',
+    delay: 2.86,
+    duration: 0.6,
+    ease: [0.32, 0.72, 0, 1],
+  },
+  {
+    id: 'horse-logo',
+    file: 'home-horse-logo.png',
+    className: 'home-text-horse-logo',
+    label: 'Deran horse logo',
+    from: 'translate3d(0, 0, 0) scale(0.96)',
+    delay: 2.94,
+    duration: 0.6,
+    ease: [0.32, 0.72, 0, 1],
+  },
+  {
+    id: 'deran',
+    file: 'home-deran-wordmark.png',
+    className: 'home-text-deran',
+    label: 'DERAN',
+    from: 'translate3d(-12%, 0, 0) scale(0.98)',
+    clipFrom: 'inset(0 100% 0 0)',
+    delay: 0.16,
+    duration: 0.88,
+    ease: [0.22, 1, 0.36, 1],
+  },
+  {
+    id: 'intro',
+    file: 'home-intro-copy.png',
+    className: 'home-text-intro',
+    label: '一个努力探索三维动效与视频剪辑的设计师。A designer delving into 3D motion graphics and video editing.',
+    from: 'translate3d(24px, 12px, 0) scale(1)',
+    blur: 10,
+    delay: 1.38,
+    duration: 0.64,
+    ease: [0.22, 1, 0.36, 1],
+  },
+  {
+    id: 'portfolio',
+    file: 'home-portfolio-wordmark.png',
+    className: 'home-text-portfolio',
+    label: 'PORTFOLIO',
+    from: 'translate3d(12%, 0, 0) scale(0.98)',
+    clipFrom: 'inset(0 0 0 100%)',
+    delay: 0.24,
+    duration: 0.92,
+    ease: [0.22, 1, 0.36, 1],
+  },
+  {
+    id: 'note',
+    file: 'home-note-copy.png',
+    className: 'home-text-note',
+    label: '热衷于三维动效表达与打破常规审美。Motion design, defying conventional aesthetics to turn ideas into visuals.',
+    from: 'translate3d(-24px, 12px, 0) scale(1)',
+    blur: 10,
+    delay: 1.46,
+    duration: 0.64,
+    ease: [0.22, 1, 0.36, 1],
+  },
+];
+
+function HomeTextMotion({ cycle, started }) {
+  const reduceMotion = useReducedMotion();
+  const show = started || reduceMotion;
+
+  return (
+    <div className="home-text-motion" aria-label="DERAN 2026 portfolio introduction">
+      <span className="sr-only">
+        WELCOME. DERAN portfolio. A designer exploring 3D motion graphics and video editing.
+      </span>
+      {homeTextLayers.map(layer => {
+        const hidden = reduceMotion
+          ? { opacity: 1, transform: visibleTransform, filter: 'blur(0px)', clipPath: 'inset(0 0 0 0)' }
+          : {
+              opacity: 0,
+              transform: layer.from,
+              filter: `blur(${layer.blur || 0}px)`,
+              clipPath: layer.clipFrom || 'inset(0 0 0 0)',
+            };
+        const visible = {
+          opacity: 1,
+          transform: visibleTransform,
+          filter: 'blur(0px)',
+          clipPath: 'inset(0 0 0 0)',
+          transition: {
+            delay: reduceMotion ? 0 : layer.delay,
+            duration: reduceMotion ? 0 : layer.duration,
+            ease: layer.ease,
+          },
+        };
+
+        return (
+          <m.img
+            key={`${cycle}-${layer.id}`}
+            className={`home-text-asset ${layer.className}`}
+            src={asset(layer.file)}
+            alt=""
+            aria-hidden="true"
+            initial={hidden}
+            animate={show ? visible : hidden}
+            loading="eager"
+            decoding="async"
+            draggable="false"
+          />
+        );
+      })}
+    </div>
   );
 }
 
@@ -814,6 +936,7 @@ function PortfolioSite() {
   const [pointerInHome, setPointerInHome] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [videoFailed, setVideoFailed] = useState(false);
+  const [homeMotionCycle, setHomeMotionCycle] = useState(0);
   const [contactPreviewOpen, setContactPreviewOpen] = useState(false);
   const video = useRef(null);
   const rockPrompt = useRef(null);
@@ -919,6 +1042,16 @@ function PortfolioSite() {
     if (imageReady.current) setReady(true);
   }
 
+  function replayHomeSequence() {
+    const homeVideo = video.current;
+    if (!homeVideo) return;
+    homeVideo.currentTime = 0;
+    setHomeMotionCycle(value => value + 1);
+    if (active === 'home' && !loading) {
+      homeVideo.play().catch(() => setRocking(false));
+    }
+  }
+
   function toggleRock() {
     if (!videoFailed) setRocking(value => !value);
   }
@@ -1019,18 +1152,25 @@ function PortfolioSite() {
             <video
               ref={video}
               className={`full-background hero-video ${videoFailed ? 'failed' : ''}`}
-              src={asset('home-video-composited-web.mp4')}
+              src={asset('home-video-textless.mp4')}
               muted={!rocking}
-              loop
               playsInline
               preload="auto"
               onLoadedData={mediaLoaded}
+              onEnded={replayHomeSequence}
               onError={() => {
                 setVideoFailed(true);
                 mediaLoaded();
               }}
               aria-label="Deran 首页动画"
             />
+            {!videoFailed && (
+              <HomeTextMotion
+                key={homeMotionCycle}
+                cycle={homeMotionCycle}
+                started={!loading}
+              />
+            )}
           </section>
 
           <div

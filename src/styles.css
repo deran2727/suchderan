@@ -1066,3 +1066,48 @@ body.series-detail-body{overflow-x:hidden;background:#080808}
   .series-detail-index{gap:3px}
 }
 
+/* Homepage copy is rendered as independent transparent artwork over the
+   textless 1920 × 1080 film. Desktop values reproduce the source-video
+   coordinates exactly, while mobile keeps the same hierarchy without
+   baking typography back into the video. */
+.home-text-motion{
+  position:absolute;
+  z-index:2;
+  top:calc(-1 * var(--header));
+  left:0;
+  width:100%;
+  height:calc(100% + var(--header));
+  overflow:hidden;
+  pointer-events:none;
+  user-select:none;
+}
+.home-text-asset{
+  position:absolute;
+  display:block;
+  height:auto;
+  max-width:none;
+  pointer-events:none;
+  transform-origin:50% 50%;
+  will-change:transform,opacity,filter,clip-path;
+}
+.home-text-welcome{left:12.708333%;top:14.62963%;width:10.416667%}
+.home-text-horse-logo{left:82.083333%;top:13.333333%;width:5.416667%}
+.home-text-deran{left:12.5%;top:48.055556%;width:35.15625%}
+.home-text-intro{left:67.395833%;top:45.37037%;width:20.3125%}
+.home-text-portfolio{left:41.510417%;top:68.981481%;width:45.885417%}
+.home-text-note{left:12.5%;top:84.444444%;width:16.510417%}
+
+@media(max-width:760px){
+  .home-text-motion{inset:0;width:100%;height:100%}
+  .home-text-welcome{left:8%;top:6%;width:132px;max-width:42%}
+  .home-text-horse-logo{left:auto;right:8%;top:6%;width:64px;max-width:20%}
+  .home-text-deran{left:8%;top:35%;width:70%}
+  .home-text-portfolio{left:8%;top:57%;width:84%}
+  .home-text-intro{left:42%;top:auto;bottom:15%;width:50%}
+  .home-text-note{left:8%;top:auto;bottom:3%;width:56%}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .home-text-asset{will-change:auto!important;filter:none!important}
+}
+
