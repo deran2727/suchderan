@@ -11,6 +11,7 @@ const portfolioReturnHref = staticHosting ? '?page=home#portfolio' : '/#portfoli
 const sections = [
   ['home', 'Home', '首页'],
   ['about', 'About', '关于我'],
+  ['experience', 'Experience', '经历'],
   ['portfolio', 'Portfolio', '作品'],
   ['contact', 'Contact', '联系方式'],
 ];
@@ -30,6 +31,7 @@ const textMotionAssets = [
   'home-portfolio-wordmark.png',
   'home-note-copy.png',
   'continuous-06.webp',
+  'experience-character.webp',
   'about-no-copy.webp',
   'catalogue-bg-opaque.webp',
   'portfolio-card-color-01.png',
@@ -53,6 +55,78 @@ const textMotionAssets = [
   'text-motion/contact-invite-en.png',
   'text-motion/contact-forward-zh.png',
   'text-motion/contact-forward-en.png',
+];
+
+const experienceEntries = [
+  {
+    id: 'fanwenhua',
+    company: '广州樊文花化妆品有限公司',
+    role: '视频剪辑',
+    dates: '2026.06 - 至今',
+    summary: '公司官方视频号的日常更新',
+    duties: [
+      '公司官方视频号的日常更新',
+      '公司日常活动的对外宣发剪辑',
+      '公司新品 TVC 的制作',
+    ],
+    achievements: [
+      '公司官方视频号 AI 视频转发与收藏破千',
+      '公司大型年中总结大会的内部视频剪辑',
+      '公司新品 TVC 的制作',
+    ],
+  },
+  {
+    id: 'shengrui',
+    company: '广州市升睿汽车用品有限公司',
+    role: '三维渲染师',
+    dates: '2025.10 - 2026.04',
+    summary: '负责汽车卷材、车衣与车膜渲染输出',
+    duties: [
+      '负责汽车卷材、车衣与车膜渲染输出',
+      '公司网站相关汽车渲染图输出',
+      '汽车定制化喷涂渲染工作',
+      '网站汽车用品动画制作',
+    ],
+    achievements: [],
+  },
+  {
+    id: 'aodingshi',
+    company: '广州奥耶士设计事务所有限公司',
+    role: '三维设计师',
+    dates: '2024.05 - 2025.05',
+    summary: '根据设计要求，输出三维效果图',
+    duties: [
+      '根据设计师要求，输出三维效果图，辅助完成餐饮项目提案',
+      '在已完成的设计项目中，根据要求输出三维效果图，完成公司品牌案例发布',
+      '根据需求，完成公司旗下餐饮项目与视频剪辑工作',
+    ],
+    achievements: [
+      '无穷新品商场货架堆头三维效果图',
+      '大快活线下多家门店视频制作',
+      '半天妖线下店打卡墙装置落地',
+      '嘉士伯新品 KV 三维效果图输出',
+      '龙歌品牌 IP 三维建模输出',
+      '黑手制局周年视频及机场、地铁视频制作',
+    ],
+  },
+  {
+    id: 'nanfeng',
+    company: '杭州南风效应品牌设计有限公司',
+    role: '品牌设计',
+    dates: '2022.10 - 2023.10',
+    summary: '负责品牌、包装、Logo 与品牌手册设计',
+    duties: [
+      '负责公司品牌设计、包装设计、Logo 设计、品牌手册等工作',
+      '全过程参与新项目的孵化，输出完整品牌设计提案，制定品牌 VI 和应用规范',
+      '完成设计方案中所需的部分插画工作',
+      '确定设计方案后，与客户、印刷厂建群沟通，跟进校色及印刷效果',
+    ],
+    achievements: [
+      '在职期间辅助设计总监和老板完成多个品牌从零到一的新品牌搭建',
+      '独立完成品牌全案设计，输出品牌设计手册并完成交付',
+      '参与品牌设计落地，与工厂对接打印校色和工艺',
+    ],
+  },
 ];
 
 const serviceSlices = [
@@ -451,6 +525,179 @@ function PortfolioMotionCards({ activeCard, onActivate, onDeactivate }) {
           </m.div>
         );
       })}
+    </div>
+  );
+}
+
+function ExperienceSection() {
+  const [openId, setOpenId] = useState(null);
+  const reduceMotion = useReducedMotion();
+  const easeOut = [0.22, 1, 0.36, 1];
+  const layoutTransition = reduceMotion
+    ? { duration: 0 }
+    : { type: 'spring', visualDuration: 0.42, bounce: 0.12 };
+
+  return (
+    <m.section
+      id="experience"
+      data-nav-section
+      className={`static-section-anchor static-experience-anchor ${openId ? 'has-open-entry' : ''}`}
+      aria-labelledby="experience-title"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.28, margin: '0px 0px -8% 0px' }}
+    >
+      <span className="experience-grid" aria-hidden="true" />
+      <div className="experience-intro">
+        <div className="experience-title-mask">
+          <m.h2
+            id="experience-title"
+            className="experience-title"
+            variants={{
+              hidden: reduceMotion ? { opacity: 1 } : { opacity: 0, y: 30, filter: 'blur(6px)' },
+              visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: reduceMotion ? 0 : 0.76, ease: easeOut } },
+            }}
+          >
+            EXPERIENCE
+          </m.h2>
+        </div>
+        <div className="experience-cn-mask">
+          <m.p
+            className="experience-title-cn"
+            variants={{
+              hidden: reduceMotion ? { opacity: 1 } : { opacity: 0, y: 24, filter: 'blur(6px)' },
+              visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { delay: reduceMotion ? 0 : 0.09, duration: reduceMotion ? 0 : 0.76, ease: easeOut } },
+            }}
+          >
+            工作经历
+          </m.p>
+        </div>
+        <m.p
+          className="experience-kicker"
+          variants={{
+            hidden: reduceMotion ? { opacity: 1 } : { opacity: 0, y: 16, filter: 'blur(6px)' },
+            visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { delay: reduceMotion ? 0 : 0.2, duration: reduceMotion ? 0 : 0.58, ease: easeOut } },
+          }}
+        >
+          SOME PATHS ARE QUIET,<br />BUT STILL LEAD FORWARD.
+        </m.p>
+      </div>
+
+      <m.div
+        className="experience-character-wrap"
+        aria-hidden="true"
+        variants={{
+          hidden: reduceMotion ? { opacity: 1 } : { opacity: 0, y: 28, scale: 0.965 },
+          visible: { opacity: 1, y: 0, scale: 1, transition: { delay: reduceMotion ? 0 : 0.16, duration: reduceMotion ? 0 : 0.9, ease: easeOut } },
+        }}
+      >
+        <img src={asset('experience-character.webp')} alt="" draggable="false" />
+      </m.div>
+
+      <m.div
+        className="experience-list"
+        role="list"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: reduceMotion ? 0 : 0.07, delayChildren: reduceMotion ? 0 : 0.13 } },
+        }}
+      >
+        {experienceEntries.map((entry, index) => {
+          const isOpen = entry.id === openId;
+          const isDimmed = openId && !isOpen;
+          return (
+            <m.article
+              layout
+              role="listitem"
+              key={entry.id}
+              className={`experience-entry ${isOpen ? 'is-open' : ''} ${isDimmed ? 'is-dimmed' : ''}`}
+              variants={{
+                hidden: reduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 },
+                visible: { opacity: 1, y: 0, transition: { duration: reduceMotion ? 0 : 0.52, ease: easeOut } },
+              }}
+              transition={{ layout: layoutTransition }}
+            >
+              <m.button
+                layout="position"
+                type="button"
+                className="experience-entry-trigger"
+                aria-expanded={isOpen}
+                aria-controls={`experience-details-${entry.id}`}
+                onClick={() => setOpenId(current => current === entry.id ? null : entry.id)}
+              >
+                <span className="experience-entry-index">{String(index + 1).padStart(2, '0')}</span>
+                <span className="experience-entry-main">
+                  <strong>{entry.company}</strong>
+                  <span className="experience-entry-role">{entry.role}</span>
+                  {!isOpen && <span className="experience-entry-summary">{entry.summary}</span>}
+                </span>
+                <span className="experience-entry-date">{entry.dates}</span>
+                <span className="experience-entry-action" aria-hidden="true">{isOpen ? '−' : '+'}</span>
+              </m.button>
+
+              <AnimatePresence initial={false}>
+                {isOpen ? (
+                  <m.div
+                    id={`experience-details-${entry.id}`}
+                    className="experience-entry-details"
+                    initial={reduceMotion ? false : { height: 0, opacity: 0, clipPath: 'inset(0 0 100% 0)', filter: 'blur(6px)' }}
+                    animate={{ height: 'auto', opacity: 1, clipPath: 'inset(0 0 0% 0)', filter: 'blur(0px)' }}
+                    exit={reduceMotion ? { opacity: 0 } : { height: 0, opacity: 0, clipPath: 'inset(0 0 100% 0)', filter: 'blur(6px)' }}
+                    transition={{ duration: reduceMotion ? 0 : 0.48, ease: easeOut }}
+                  >
+                    <ExperienceDetailColumn title="工作内容" items={entry.duties} reduceMotion={reduceMotion} />
+                    {entry.achievements.length > 0 && (
+                      <ExperienceDetailColumn title="项目业绩" items={entry.achievements} reduceMotion={reduceMotion} />
+                    )}
+                  </m.div>
+                ) : null}
+              </AnimatePresence>
+            </m.article>
+          );
+        })}
+      </m.div>
+
+      <m.p
+        className="experience-instruction"
+        variants={{
+          hidden: reduceMotion ? { opacity: 1 } : { opacity: 0 },
+          visible: { opacity: 1, transition: { delay: reduceMotion ? 0 : 0.48, duration: reduceMotion ? 0 : 0.42 } },
+        }}
+      >
+        CLICK ANY EXPERIENCE TO VIEW FULL DETAILS
+      </m.p>
+      <div className="experience-service-footer" aria-hidden="true">
+        <span>BEAUTY<br />RENDERING</span>
+        <span>REALISTIC CAR<br />RENDERING</span>
+        <span>IP IMAGE<br />MODELING</span>
+        <span>AI VIDEO<br />EDITING</span>
+        <span>MAKING<br />A BETTER VISUAL WORLD.</span>
+      </div>
+    </m.section>
+  );
+}
+
+function ExperienceDetailColumn({ title, items, reduceMotion }) {
+  return (
+    <div className="experience-detail-column">
+      <h3>{title}</h3>
+      <m.ol
+        initial="hidden"
+        animate="visible"
+        variants={{ visible: { transition: { staggerChildren: reduceMotion ? 0 : 0.05 } } }}
+      >
+        {items.map((item, index) => (
+          <m.li
+            key={`${item}-${index}`}
+            variants={{
+              hidden: reduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 },
+              visible: { opacity: 1, y: 0, transition: { duration: reduceMotion ? 0 : 0.36, ease: [0.22, 1, 0.36, 1] } },
+            }}
+          >
+            {item}
+          </m.li>
+        ))}
+      </m.ol>
     </div>
   );
 }
@@ -1184,19 +1431,13 @@ function PortfolioSite() {
             <span>{rocking ? '点击任意位置即可停止摇滚' : '点击任意位置即可开启摇滚'}</span>
           </div>
 
-          <section className="static-pages-board" aria-label="关于我、作品和联系方式">
-            <img
-              className="static-pages-image"
-              src={asset('continuous-06.webp')}
-              alt=""
-              aria-hidden="true"
-              loading="eager"
-            />
+          <section className="static-pages-board" aria-label="关于我、工作经历、作品和联系方式">
             <SectionTextSequence
               id="about"
               data-nav-section
               className="static-section-anchor static-about-anchor"
             >
+              <img className="static-panel-source static-panel-source-about" src={asset('continuous-06.webp')} alt="" aria-hidden="true" loading="eager" />
               <h2 className="sr-only">ABOUT 关于我</h2>
               <p className="sr-only">
                 BEAUTY RENDERING。REALISTIC CAR RENDERING。IP IMAGE MODELING。AI VIDEO EDITING。
@@ -1246,8 +1487,10 @@ function PortfolioSite() {
               />
               <TextImageReveal className="about-motion-caption" src="text-motion/about-avatar-caption.png" delay={0.55} />
             </SectionTextSequence>
+            <ExperienceSection />
             <SectionTextSequence id="portfolio" data-nav-section className="static-section-anchor static-portfolio-anchor">
               <h2 className="sr-only">PORTFOLIO 作品</h2>
+              <img className="static-panel-source static-panel-source-portfolio" src={asset('continuous-06.webp')} alt="" aria-hidden="true" loading="eager" />
               <img
                 className="portfolio-panel-clean"
                 src={asset('catalogue-bg-opaque.webp')}
@@ -1278,6 +1521,7 @@ function PortfolioSite() {
               className="static-section-anchor static-contact-anchor"
             >
               <h2 className="sr-only">CONTACT 联系方式</h2>
+              <img className="static-panel-source static-panel-source-contact" src={asset('continuous-06.webp')} alt="" aria-hidden="true" loading="eager" />
               <p className="sr-only">
                 感谢浏览到这里。Thanks for scrolling this far. 如果你对我的作品感兴趣，欢迎随时联系我。If you’re interested in my work, feel free to get in touch anytime. 期待与您合作。Looking forward to working with you.
               </p>

@@ -354,21 +354,20 @@ html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
   }
 }
 
-/* Static continuous-board edition: keep the live home cover, then reveal the
-   remaining three 16:9 panels from the supplied 8000 × 18000 source as one
-   uninterrupted image. */
+/* Static continuous-board edition: keep the live home cover, insert the live
+   Experience panel, and crop the original About / Catalogue / Contact panels
+   from the supplied 8000 × 18000 source. */
 .static-board-site .static-pages-board{
   position:relative;
   z-index:1;
   width:100%;
-  height:168.75vw;
+  height:225vw;
   min-height:0;
   overflow:hidden;
   background:#000;
 }
-.static-board-site .static-pages-image{
+.static-board-site .static-panel-source{
   position:absolute;
-  top:-56.25vw;
   left:0;
   width:100%;
   height:auto;
@@ -376,16 +375,20 @@ html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
   pointer-events:none;
   user-select:none;
 }
+.static-board-site .static-panel-source-about{top:-56.25vw}
+.static-board-site .static-panel-source-portfolio{top:-112.5vw}
+.static-board-site .static-panel-source-contact{top:-168.75vw}
 .static-board-site .static-section-anchor{
   position:absolute;
   left:0;
   width:100%;
-  height:33.333333%;
+  height:25%;
   pointer-events:none;
 }
 .static-board-site .static-about-anchor{top:0;z-index:2;overflow:hidden}
-.static-board-site .static-portfolio-anchor{top:33.333333%;z-index:1;overflow:hidden}
-.static-board-site .static-contact-anchor{top:66.666667%;z-index:2;overflow:hidden}
+.static-board-site .static-experience-anchor{top:25%;z-index:3;overflow:hidden}
+.static-board-site .static-portfolio-anchor{top:50%;z-index:1;overflow:hidden}
+.static-board-site .static-contact-anchor{top:75%;z-index:2;overflow:hidden}
 .static-board-site .about-panel-clean,
 .static-board-site .portfolio-panel-clean{
   position:absolute;
@@ -457,6 +460,374 @@ html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
 .static-board-site .about-motion-copy-zh{left:13.0729%;top:36.0185%;width:46.9271%;height:21.2963%}
 .static-board-site .about-motion-copy-en{left:12.7083%;top:61.4815%;width:47.7083%;height:33.1481%}
 .static-board-site .about-motion-caption{left:74.0625%;top:86.6667%;width:18.5417%;height:3.8889%}
+
+/* Experience: a quiet editorial accordion. The left field carries the single
+   hero image; the right field stays concise until a visitor asks for detail. */
+.static-board-site .static-experience-anchor{
+  --experience-line:rgba(255,255,255,.2);
+  --experience-muted:#929292;
+  --experience-red:#d52019;
+  background:#000;
+  color:#f4f4f2;
+  pointer-events:auto;
+  isolation:isolate;
+  box-shadow:inset 0 1px 0 var(--experience-line),inset 0 -1px 0 var(--experience-line);
+}
+.static-board-site .experience-grid{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:
+    linear-gradient(to right,
+      transparent 5.72%,var(--experience-line) 5.72%,var(--experience-line) calc(5.72% + 1px),transparent calc(5.72% + 1px),
+      transparent 22.85%,var(--experience-line) 22.85%,var(--experience-line) calc(22.85% + 1px),transparent calc(22.85% + 1px),
+      transparent 42.55%,var(--experience-line) 42.55%,var(--experience-line) calc(42.55% + 1px),transparent calc(42.55% + 1px),
+      transparent 59.2%,var(--experience-line) 59.2%,var(--experience-line) calc(59.2% + 1px),transparent calc(59.2% + 1px),
+      transparent 77.15%,var(--experience-line) 77.15%,var(--experience-line) calc(77.15% + 1px),transparent calc(77.15% + 1px),
+      transparent 94.08%,var(--experience-line) 94.08%,var(--experience-line) calc(94.08% + 1px),transparent calc(94.08% + 1px)),
+    linear-gradient(to bottom,
+      transparent 8.95%,var(--experience-line) 8.95%,var(--experience-line) calc(8.95% + 1px),transparent calc(8.95% + 1px),
+      transparent 90.6%,var(--experience-line) 90.6%,var(--experience-line) calc(90.6% + 1px),transparent calc(90.6% + 1px));
+  pointer-events:none;
+}
+.static-board-site .experience-intro{
+  position:absolute;
+  z-index:3;
+  left:5.72%;
+  top:10.3%;
+  width:36.83%;
+  pointer-events:none;
+}
+.static-board-site .experience-title-mask,
+.static-board-site .experience-cn-mask{overflow:hidden}
+.static-board-site .experience-title{
+  margin:0;
+  color:#f4f4f2;
+  font-family:Impact,Haettenschweiler,"Arial Narrow Bold","Arial Narrow",sans-serif;
+  font-size:clamp(62px,8.2vw,158px);
+  font-stretch:condensed;
+  font-weight:900;
+  line-height:.78;
+  letter-spacing:-.025em;
+  transform-origin:left bottom;
+}
+.static-board-site .experience-title-cn{
+  margin:1.35vw 0 0;
+  font-size:clamp(25px,3.15vw,60px);
+  font-weight:750;
+  line-height:1;
+  letter-spacing:-.055em;
+}
+.static-board-site .experience-kicker{
+  margin:1.4vw 0 0 .1vw;
+  color:#8d8d8d;
+  font-size:clamp(9px,.71vw,14px);
+  font-weight:500;
+  line-height:1.18;
+  letter-spacing:.005em;
+}
+.static-board-site .experience-character-wrap{
+  position:absolute;
+  z-index:2;
+  left:0;
+  bottom:4.06%;
+  width:52.2%;
+  height:58%;
+  overflow:visible;
+  transform-origin:50% 100%;
+  pointer-events:none;
+}
+.static-board-site .experience-character-wrap::after{
+  content:none;
+}
+.static-board-site .experience-character-wrap img{
+  position:absolute;
+  left:-5%;
+  bottom:-7%;
+  display:block;
+  width:112%;
+  height:auto;
+  max-width:none;
+  filter:saturate(.93) contrast(1.03);
+  user-select:none;
+}
+.static-board-site .experience-list{
+  position:absolute;
+  z-index:5;
+  top:8.95%;
+  right:5.92%;
+  left:42.55%;
+  display:flex;
+  flex-direction:column;
+  width:auto;
+  max-height:78.9%;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:#666 transparent;
+  pointer-events:auto;
+}
+.static-board-site .experience-list::-webkit-scrollbar{width:4px}
+.static-board-site .experience-list::-webkit-scrollbar-thumb{background:#666}
+.static-board-site .experience-entry{
+  position:relative;
+  flex:0 0 auto;
+  border-bottom:1px solid var(--experience-line);
+  opacity:1;
+  transition:opacity 220ms ease;
+}
+.static-board-site .experience-entry:first-child{border-top:1px solid var(--experience-line)}
+.static-board-site .experience-entry::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  left:calc(32.31% + .7vw);
+  top:1.55vw;
+  width:3px;
+  height:0;
+  background:var(--experience-red);
+  transition:height 300ms cubic-bezier(.22,1,.36,1);
+}
+.static-board-site .experience-entry.is-open::before{height:3.25vw}
+.static-board-site .experience-entry.is-dimmed{opacity:.46}
+.static-board-site .experience-entry-trigger{
+  position:relative;
+  display:grid;
+  grid-template-columns:32.31% 34.84% 27.3% 5.55%;
+  gap:0;
+  align-items:start;
+  width:100%;
+  min-height:6.45vw;
+  padding:1.45vw 0 1.3vw;
+  border:0;
+  background:transparent;
+  color:inherit;
+  font:inherit;
+  text-align:left;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.static-board-site .experience-entry-trigger:focus-visible{
+  outline:2px solid #fff;
+  outline-offset:-4px;
+}
+.static-board-site .experience-entry-index{
+  padding:.08vw 0 0 1.15vw;
+  color:#666;
+  font-size:.65vw;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:.06em;
+}
+.static-board-site .experience-entry-main{
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  gap:.36vw;
+  padding:0 .75vw;
+}
+.static-board-site .experience-entry-main strong{
+  overflow-wrap:anywhere;
+  font-size:clamp(13px,1.12vw,22px);
+  font-weight:650;
+  line-height:1.18;
+  letter-spacing:-.025em;
+}
+.static-board-site .experience-entry-role{
+  font-size:clamp(10px,.83vw,16px);
+  font-weight:500;
+  line-height:1.15;
+}
+.static-board-site .experience-entry-summary{
+  overflow:hidden;
+  color:#8d8d8d;
+  font-size:clamp(9px,.72vw,14px);
+  line-height:1.2;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.static-board-site .experience-entry-date{
+  padding:.05vw .75vw 0;
+  color:#d5d5d5;
+  font-size:clamp(10px,.8vw,15px);
+  font-variant-numeric:tabular-nums;
+  line-height:1.2;
+  text-align:right;
+  white-space:nowrap;
+}
+.static-board-site .experience-entry-action{
+  display:grid;
+  place-items:center;
+  width:1.6vw;
+  aspect-ratio:1;
+  justify-self:center;
+  margin-top:-.25vw;
+  border:1px solid #686868;
+  border-radius:50%;
+  color:#bdbdbd;
+  font-size:1.05vw;
+  line-height:1;
+  transition:border-color 180ms ease,color 180ms ease,background-color 180ms ease;
+}
+.static-board-site .experience-entry.is-open .experience-entry-action{
+  border-color:var(--experience-red);
+  background:var(--experience-red);
+  color:#fff;
+}
+.static-board-site .experience-entry-details{
+  display:grid;
+  grid-template-columns:51.46% 48.54%;
+  gap:0;
+  overflow:hidden;
+  margin-left:32.31%;
+  padding:0 .75vw 1.55vw;
+  transform-origin:top;
+}
+.static-board-site .experience-entry-details:has(.experience-detail-column:only-child){grid-template-columns:1fr}
+.static-board-site .experience-detail-column:first-child{padding-right:1vw}
+.static-board-site .experience-detail-column + .experience-detail-column{padding-left:1vw}
+.static-board-site .experience-detail-column h3{
+  margin:0 0 .65vw;
+  color:var(--experience-red);
+  font-size:clamp(9px,.67vw,13px);
+  font-weight:650;
+  line-height:1;
+  letter-spacing:.08em;
+}
+.static-board-site .experience-detail-column ol{
+  display:grid;
+  gap:.35vw;
+  margin:0;
+  padding:0;
+  list-style:none;
+  counter-reset:experience-detail;
+}
+.static-board-site .experience-detail-column li{
+  position:relative;
+  padding-left:1.35em;
+  color:#b5b5b5;
+  font-size:clamp(9px,.67vw,13px);
+  font-weight:400;
+  line-height:1.35;
+  letter-spacing:-.01em;
+  counter-increment:experience-detail;
+}
+.static-board-site .experience-detail-column li::before{
+  content:counter(experience-detail,decimal-leading-zero);
+  position:absolute;
+  left:0;
+  top:.02em;
+  color:#626262;
+  font-size:.78em;
+  font-variant-numeric:tabular-nums;
+}
+.static-board-site .experience-instruction{
+  position:absolute;
+  z-index:5;
+  right:5.92%;
+  bottom:10.9%;
+  margin:0;
+  color:#666;
+  font-size:.58vw;
+  letter-spacing:.08em;
+  pointer-events:none;
+}
+.static-board-site .experience-service-footer{
+  position:absolute;
+  z-index:4;
+  right:5.72%;
+  bottom:0;
+  left:5.72%;
+  display:grid;
+  grid-template-columns:19.39% 22.3% 18.84% 20.31% 19.16%;
+  align-items:center;
+  height:9.4%;
+  color:#858585;
+  font-size:.61vw;
+  line-height:1.05;
+  pointer-events:none;
+}
+.static-board-site .experience-service-footer span:nth-child(5){text-align:right}
+@media(hover:hover) and (pointer:fine){
+  .static-board-site .experience-entry-trigger:hover .experience-entry-main strong{color:#fff}
+  .static-board-site .experience-entry-trigger:hover .experience-entry-action{border-color:#fff;color:#fff}
+}
+@media(max-width:760px){
+  .static-board-site .static-pages-board{
+    --experience-mobile-height:1450px;
+    height:calc(168.75vw + var(--experience-mobile-height));
+  }
+  .static-board-site .static-section-anchor{height:56.25vw}
+  .static-board-site .static-about-anchor{top:0}
+  .static-board-site .static-experience-anchor{
+    top:56.25vw;
+    height:var(--experience-mobile-height);
+  }
+  .static-board-site .static-portfolio-anchor{top:calc(56.25vw + var(--experience-mobile-height))}
+  .static-board-site .static-contact-anchor{top:calc(112.5vw + var(--experience-mobile-height))}
+  .static-board-site .experience-grid{
+    background:
+      linear-gradient(to right,transparent 16px,rgba(255,255,255,.17) 16px,rgba(255,255,255,.17) 17px,transparent 17px,transparent calc(100% - 17px),rgba(255,255,255,.17) calc(100% - 17px),rgba(255,255,255,.17) calc(100% - 16px),transparent calc(100% - 16px)),
+      linear-gradient(to bottom,transparent 70px,rgba(255,255,255,.17) 70px,rgba(255,255,255,.17) 71px,transparent 71px,transparent calc(100% - 54px),rgba(255,255,255,.17) calc(100% - 54px),rgba(255,255,255,.17) calc(100% - 53px),transparent calc(100% - 53px));
+  }
+  .static-board-site .experience-intro{
+    left:32px;
+    top:104px;
+    width:calc(100% - 64px);
+  }
+  .static-board-site .experience-title{font-size:clamp(48px,13.2vw,72px);line-height:.84;letter-spacing:-.065em}
+  .static-board-site .experience-title-cn{margin-top:16px;font-size:32px}
+  .static-board-site .experience-kicker{margin-top:18px;font-size:10px;line-height:1.2}
+  .static-board-site .experience-character-wrap{
+    left:0;
+    top:272px;
+    bottom:auto;
+    width:100%;
+    height:280px;
+  }
+  .static-board-site .experience-character-wrap img{left:-23%;bottom:-3%;width:151%}
+  .static-board-site .experience-character-wrap::after{height:20%}
+  .static-board-site .experience-list{
+    top:558px;
+    right:16px;
+    left:16px;
+    width:auto;
+    max-height:none;
+    overflow:visible;
+  }
+  .static-board-site .experience-entry::before{top:22px;width:3px}
+  .static-board-site .experience-entry.is-open::before{height:52px}
+  .static-board-site .experience-entry-trigger{
+    grid-template-columns:28px minmax(0,1fr) auto 30px;
+    gap:9px;
+    min-height:104px;
+    padding:20px 4px 18px 12px;
+  }
+  .static-board-site .experience-entry-index{padding:2px 0 0;font-size:9px}
+  .static-board-site .experience-entry-main{gap:6px;padding:0}
+  .static-board-site .experience-entry-main strong{font-size:15px;line-height:1.22}
+  .static-board-site .experience-entry-role{font-size:12px}
+  .static-board-site .experience-entry-summary{font-size:10px}
+  .static-board-site .experience-entry-date{font-size:10px;line-height:1.25}
+  .static-board-site .experience-entry-action{width:28px;margin-top:-3px;font-size:18px}
+  .static-board-site .experience-entry-details{
+    grid-template-columns:1fr;
+    gap:20px;
+    margin-left:0;
+    padding:0 18px 24px 49px;
+  }
+  .static-board-site .experience-detail-column:first-child,
+  .static-board-site .experience-detail-column + .experience-detail-column{padding:0}
+  .static-board-site .experience-detail-column h3{margin-bottom:10px;font-size:10px}
+  .static-board-site .experience-detail-column ol{gap:7px}
+  .static-board-site .experience-detail-column li{font-size:11px;line-height:1.5}
+  .static-board-site .experience-instruction{
+    right:auto;
+    bottom:24px;
+    left:32px;
+    font-size:8px;
+  }
+  .static-board-site .experience-service-footer{display:none}
+}
 
 /* Catalogue: one deliberate focal moment. A clean background lets the five
    independent work cards fan out, reveal colour, and move without ghosting. */
@@ -803,6 +1174,9 @@ html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
   .static-board-site .portfolio-motion-dim{transition:none}
   .static-board-site .contact-card-zoom-trigger,
   .contact-preview-close{transition:none}
+  .static-board-site .experience-entry,
+  .static-board-site .experience-entry::before,
+  .static-board-site .experience-entry-action{transition:none}
 }
 
 /* Cosmetics detail page: the supplied 8000px-wide background and transparent
