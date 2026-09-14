@@ -6,8 +6,14 @@ const fileExport = window.location.protocol === 'file:';
 const staticHosting = fileExport || import.meta.env.BASE_URL !== '/';
 const assetBase = fileExport ? './' : import.meta.env.BASE_URL;
 const asset = name => `${assetBase}assets/${name}`;
-const routeHref = path => staticHosting ? `?page=${path.replace(/^\//, '')}` : path;
-const portfolioReturnHref = staticHosting ? '?page=home#portfolio' : '/#portfolio';
+const activeShareToken = new URLSearchParams(window.location.search).get('share');
+const encodedShareToken = activeShareToken ? encodeURIComponent(activeShareToken) : '';
+const routeHref = path => staticHosting
+  ? `?page=${path.replace(/^\//, '')}${encodedShareToken ? `&share=${encodedShareToken}` : ''}`
+  : `${path}${encodedShareToken ? `?share=${encodedShareToken}` : ''}`;
+const portfolioReturnHref = staticHosting
+  ? `?page=home${encodedShareToken ? `&share=${encodedShareToken}` : ''}#portfolio`
+  : `/${encodedShareToken ? `?share=${encodedShareToken}` : ''}#portfolio`;
 const sections = [
   ['home', 'Home', '首页'],
   ['about', 'About', '关于我'],

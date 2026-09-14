@@ -1485,3 +1485,93 @@ body.series-detail-body{overflow-x:hidden;background:#080808}
   .home-text-asset{will-change:auto!important;filter:none!important}
 }
 
+/* Signed temporary portfolio preview. It stays deliberately small so the test
+   state is visible without competing with the portfolio artwork. */
+.temporary-access-badge{
+  position:fixed;
+  z-index:10020;
+  right:18px;
+  bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:142px;
+  padding:10px 13px;
+  color:#f3f3f3;
+  background:rgba(5,5,5,.86);
+  border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(12px);
+  pointer-events:none;
+}
+.temporary-access-badge>span{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#d52019;
+  box-shadow:0 0 12px rgba(213,32,25,.75);
+}
+.temporary-access-badge div{display:grid;gap:2px}
+.temporary-access-badge strong{
+  font:600 10px/1.1 Arial,sans-serif;
+  letter-spacing:.12em;
+}
+.temporary-access-badge small{
+  color:#a9a9a9;
+  font:400 9px/1.2 Arial,sans-serif;
+  letter-spacing:.04em;
+}
+.share-access-message{
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  padding:28px clamp(24px,5.7vw,92px);
+  color:#f4f4f4;
+  background:#030303;
+  isolation:isolate;
+}
+.share-access-grid{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  opacity:.34;
+  background-image:
+    linear-gradient(rgba(255,255,255,.22) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.22) 1px,transparent 1px);
+  background-size:100% 25%,20% 100%;
+}
+.share-access-brand,
+.share-access-footer,
+.share-access-index{margin:0;font:400 11px/1.15 Arial,sans-serif;letter-spacing:.04em}
+.share-access-brand{font-size:18px;font-weight:700}
+.share-access-brand sup{font-size:8px}
+.share-access-message section{
+  align-self:center;
+  width:min(900px,100%);
+  margin-left:clamp(0px,14vw,240px);
+}
+.share-access-index{margin-bottom:28px;color:#8d8d8d}
+.share-access-message h1{
+  max-width:900px;
+  margin:0;
+  font-family:Impact,'Arial Narrow',sans-serif;
+  font-size:clamp(50px,8.6vw,142px);
+  font-weight:400;
+  line-height:.82;
+  letter-spacing:-.035em;
+}
+.share-access-message h2{margin:26px 0 0;font:600 clamp(18px,2vw,30px)/1.2 Arial,sans-serif}
+.share-access-message section>p:last-of-type,
+.share-access-message time{display:block;margin:12px 0 0;color:#9a9a9a;font:400 13px/1.5 Arial,sans-serif}
+.share-access-footer{align-self:end;color:#8d8d8d}
+@media (max-width:640px){
+  .temporary-access-badge{right:10px;bottom:10px;min-width:128px;padding:9px 11px}
+  .share-access-message{padding:22px 20px}
+  .share-access-grid{background-size:100% 20%,33.333% 100%}
+  .share-access-message section{margin-left:0}
+  .share-access-message h1{font-size:clamp(52px,18vw,88px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .temporary-access-badge>span{box-shadow:none}
+}
